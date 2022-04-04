@@ -1,0 +1,827 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<!-- login signup -->
+<center>
+  <div style="margin-top: 120px;">
+    <p>Translate this page (इस पेज का अनुवाद करें):</p>
+
+    <div id="google_translate_element"></div>
+  </div>
+</center>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript"
+  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+ 
+   
+<nav style="margin-top: 30px;" class="navbar navbar-expand-lg navbar-light shadow-sm bg-light fixed-top">
+  <div class="container"> <a class="navbar-brand d-flex align-items-center" href="#">
+    <img src="https://firebasestorage.googleapis.com/v0/b/tanweb-77381.appspot.com/o/decentservicesLogo%2FDecent%20Services%20-%20Final%20Logo%20-%20PNG.png?alt=media&token=cff5afd8-0652-48e6-a973-027d2c0b2525" width="100" height="50"alt="deccentLogo">
+      <!-- <svg width="40px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+        style="enable-background:new 0 0 512 512;" xml:space="preserve">
+        <g>
+          <g>
+            <path
+              d="M511.981,118.509c-0.135-2.956-1.892-5.726-4.565-7.04l-159.24-79.62c-3.776-1.887-8.363-0.64-10.664,2.898 L229.916,200.282l-55.413-85.891c-0.796-1.235-1.945-2.264-3.259-2.922l-159.24-79.62C6.582,29.138,0,33.218,0,39.268v79.621 c0,4.581,3.712,8.294,8.294,8.294c4.581,0,8.294-3.712,8.294-.294V52.687l142.652,71.326v335.32L16.587,388.008V154.277	c0-4.581-3.712-8.294-8.294-8.294c-4.581,0-8.294,3.712-8.294,8.294v238.857c0,3.142,1.775,6.013,4.585,7.418l159.24,79.62	c5.427,2.714,12.003-1.375,12.003-7.418V318.087l324.17,162.085c5.427,2.714,12.003-1.375,12.003-7.418V118.888	C512,118.76,511.987,118.636,511.981,118.509z M175.827,299.541v-152.5l145.239,225.12L175.827,299.541z M495.413,459.335
+    l-139.34-69.671l108.576-186.993c2.299-3.961,0.952-9.037-3.009-11.337c-3.96-2.298-9.036-0.953-11.337,3.009L344.094,377.258
+    L239.77,215.555L347.383,49.998l144.717,72.359l-26.387,45.446c-2.299,3.961-0.952,9.037,3.009,11.337	c3.958,2.297,9.035,0.953,11.337-3.009l15.354-26.443V459.335z"
+              fill="#000" />
+          </g>
+        </g>
+      </svg> -->
+      <!-- <span class="ml-3 font-weight-bold">BRAND</apan> -->
+    </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+      data-target="#navbar4">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbar4">
+      <ul class="navbar-nav mr-auto pl-lg-4">
+        <form action="/">
+        <li class="nav-item px-lg-2 active"> <button style="  background: none!important;
+          border: none;
+          padding: 0!important;
+          /*optional*/
+          /*input has OS specific font-family*/
+          cursor: pointer;" class="nav-link" > <span
+              class="d-inline-block d-lg-none icon-width"><i class="fas fa-home"></i></span>Home</button> </li>
+          </form>
+          
+        <li class="nav-item px-lg-2 dropdown d-menu">
+          <a style="background: none!important;
+          border: none;
+          padding: 0!important;
+          /*optional*/
+          /*input has OS specific font-family*/
+          cursor: pointer;" class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false"><span class="d-inline-block d-lg-none icon-width"><i
+                class="far fa-caret-square-down"></i></span>Services
+            <svg id="arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+
+          <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
+            <ul>
+              {% for i in l %}
+              <li>
+                <form action="category">
+                  <button name="id" value="{{i.cat_id}}">{{i.heading}}</button>
+                </form>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        </li>
+        <form action="blog">
+          <li class="nav-item px-lg-2"> <button style="background: none!important;
+            border: none;
+            padding: 0!important;
+            /*optional*/
+            /*input has OS specific font-family*/
+            cursor: pointer;" class="nav-link" ><span class="d-inline-block d-lg-none icon-width"><i
+                  class="far fa-user"></i></i></span>blog</button> </li>
+            </form>
+            <form action="about">
+        <li class="nav-item px-lg-2"> <button style="background: none!important;
+          border: none;
+          padding: 0!important;
+          /*optional*/
+          /*input has OS specific font-family*/
+          cursor: pointer;" class="nav-link" ><span class="d-inline-block d-lg-none icon-width"><i
+                class="far fa-user"></i></i></span>About</button> </li>
+          </form>
+          <form action="contact">
+        <li class="nav-item px-lg-2"> <button style="background: none!important;
+          border: none;
+          padding: 0!important;
+          /*optional*/
+          /*input has OS specific font-family*/
+          cursor: pointer;" class="nav-link" ><span class="d-inline-block d-lg-none icon-width"><i
+                class="far fa-envelope"></i></span>Contact</button> </li>
+            </form>
+
+        <!-- LOGIN SIGNUP -->
+        <div style="display: flex;margin:10px 50px;" id="dashboard">
+
+          <h4 id="user" style="font-family: 'Courier New', monospace;">{{request.session.user_name}}</h4>
+          &nbsp;
+          &nbsp;
+          <button id="logout" class="btn btn-primary">Logout</button>
+        </div>
+
+
+
+        <div style="display: flex;margin:0px 50px;" id="loginRegister">
+          <a href="#login" class="nav-link" data-toggle="modal"><i class="fa fa-sign-in"></i>
+            Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="#register" class="nav-link" data-toggle="modal"><i class="fa fa-user-plus"></i> Register</a>
+        </div>
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<div class="modal fade" id="login">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content form-wrapper">
+      <div class="close-box" data-dismiss="modal">
+        <i class="fa fa-times fa-2x"></i>
+      </div>
+      <div class="container-fluid mt-5">
+
+
+        <div class="form-group text-center">
+          <h4>Login Form</h4>
+          <h6>Enter your credentials</h6>
+        </div>
+        <div class="form-group" style="position: relative;">
+          <label for="l_email">Mobile or Email</label>
+          <input type="text" id="loginEmail" class="form-control mb-1" placeholder="Mobile Number or Email" required>
+
+
+
+        </div>
+        <div class="form-group pb-3" style="position: relative;">
+          <label for="l_password">Password</label>
+          <input type="password" id="loginPassword" class="form-control mb-1" placeholder="*******************"
+            required>
+          <p style="color:red;" id="loginMessage"></p>
+          <input type="button" id="forgotPassword" value="Forgot Password"
+            style="display:block; position: absolute; right: 0;" />
+          <div id="otpbox"></div>
+          <div id="verifyotpbox"></div>
+        </div>
+
+        <div class="form-group pt-2">
+          <button class="btn btn-info form-control" id="loginSubmit">Login</button>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="modal fade" id="register">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content form-wrapper">
+      <div class="close-box" data-dismiss="modal">
+        <i class="fa fa-times fa-2x"></i>
+      </div>
+      <div class="container-fluid mt-5">
+
+        <div class="form-group text-center pb-2">
+          <h4>Registration Form</h4>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="name">Name</label>
+            <input type="text" id="registerName" class="form-control" placeholder="Jhon Doe" required>
+          </div>
+
+        </div>
+        <div class="form-row mb-1">
+          <div class="form-group" style="position:relative;">
+            <label for="email">Email (Optional)</label>
+            <input type="email" id="registerEmail" class="form-control mb-1" placeholder="jhonedoe@gmail.com">
+            <a href="#" data-toggle="modal" data-target="#login"
+              style="display:none; position: absolute; right: 0; font-size: 12px;">That's you? Login</a>
+          </div>
+          <div class="form-group col">
+            <label>Whatsapp No (Optional)</label>
+            <input type="text" id="whatsappPhno" class="form-control" placeholder="*******************" required>
+          </div>
+        </div>
+        <div class="form-row mb-1">
+          <div class="form-group col">
+            <label for="password">Password </label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="*******************"
+              required>
+
+          </div>
+          <div class="form-group col">
+            <label for="password_confirmation">Confirm Password</label>
+            <input type="password" name="confirmation_password" id="confirmation_password" class="form-control"
+              placeholder="*******************" required>
+          </div>
+        </div>
+
+        <span style="margin-left:4em;text-align:justify;" id='message'></span>
+        <!-- <br><br> -->
+
+        <div class="registrationFormAlert" style="color:green;" id="CheckPasswordMatch">
+
+          <!-- <div class="form-row mb-1"> -->
+          <!-- <div class="form-group col">
+                  <label for="area_pincode">Area Pincode</label>
+                  <input type="text" name="area_pincode" class="form-control" placeholder="*******************" required>
+                </div> -->
+          <div class="form-row mb-1">
+
+            <div class="form-group col">
+              <label>Mobile No (Mendatory)</label>
+              <input type="text" id="registerPhno" class="form-control" placeholder="*******************" required>
+            </div>
+
+            <div class="form-group col">
+              <!-- <label>send otp</label> -->
+              <br>
+
+              <button id="registerOtpSend" class="my-3 mx-4 px-4">Send OTP</button>
+            </div>
+          </div>
+
+
+          <div class="form-row mb-3" id="registerShowOtpdiv" style="display:none" ;>
+            <div class="form-group col" id="enterOtp">
+              <label>Verify OTP</label>
+              <input type="text" id="registerOtpVerify" class="form-control"
+                placeholder="Enter 4 digit OTP (One time password)" required>
+            </div>
+            <div class="form-group col" id="registerChange">
+              <br>
+              <button id="registerOtpVerifyButton" class="my-3 mx-4 px-4">Verify OTP</button>
+            </div>
+
+          </div>
+
+
+
+          <div class="form-group">
+            <button class="btn btn-info form-control" id="registerSubmit">Register</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- LOGIN SIGNUP -->
+
+
+
+{% block content %}
+{% endblock %}
+
+<!-- Footer -->
+<br><br>
+<h1 class="uk-heading-line uk-text-center"><span><br></span></h1>
+
+
+<footer class="text-center text-lg-start bg-light text-muted my-3 pt-3">
+
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-5 col-lg-5 col-xl-5 mx-auto mb-4">
+          <!-- Content -->
+          <h4 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Decent Services
+          </h4>
+          <p>
+            Decent Services is dedicated to the highest quality of online sevices delivered with imagination, creativity
+            and innovation. Our main services are Insurance services, PAN Services, Voter ID Services, Licensing
+            Services, Rail & Air Ticketing and many more.
+
+          </p>
+        </div>
+        <!-- Grid column -->
+
+
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h4 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h4>
+          <p>
+            <a href="http://127.0.0.1:8000/sub_category?type=Vehicle+Insurance" class="text-reset">Vehicle Insurance</a>
+          </p>
+          <p>
+            <a href="http://127.0.0.1:8000/sub_category?type=Voter+Card" class="text-reset">Voter Card</a>
+          </p>
+          <p>
+            <a href="http://127.0.0.1:8000/sub_category?type=Pan+Card" class="text-reset">Pan Card</a>
+          </p>
+          <p>
+            <a href="http://127.0.0.1:8000/sub_category?type=Railway+Ticket" class="text-reset">Rail Ticket</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h4 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h4>
+          <p style="font-size:15px;"> C/o Decent Services Ground Floor Rounak Residency H.No-722 New Layout
+            Sitaramdera Agrico Jamshedpur-831009 Jharkhand</p>
+
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <i class="fa fa-mobile fa-3x" aria-hidden="true"></i>
+          <p style="font-size:18px;">9122355987 / 8987761249 / 9304644158</p>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <a href="https://wa.me/message/LXQYR4TPTUB4O1"><i class="mx-3 fa fa-whatsapp fa-5x"
+              aria-hidden="true"></i></a>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <i class="fa fa-phone fa-3x" aria-hidden="true"></i>
+          <p style="font-size:18px;">0657 2346390 / 2440025</p>
+        </div>
+        <div class="mx-5 col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29423.91860606243!2d86.20837864523133!3d22.802840884388406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e2fb44ea02e3%3A0x52593ed29be222ff!2sDecent%20Services!5e0!3m2!1sen!2sin!4v1632388234757!5m2!1sen!2sin"
+            class="img-fluid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        
+        <!-- Grid column -->
+      </div>
+      <h3 style="text-align:center;text-decoration: initial;">
+        <a href="https://docs.google.com/document/d/1k4bUeQ8pDDwlvpIGNWLgbmPYBhvwLPIG/edit">Developer: Rehan Akhter</a>
+      </h3>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <!-- <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div> -->
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+
+
+
+
+<!-- SCRIPTS -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/js/uikit-icons.min.js"></script>
+
+
+
+
+
+<!-- ................................firebase...................................... -->
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+<!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js">
+
+ </script>
+ <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"> </script>
+ 
+ <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js">
+ </script>
+ <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js">
+
+ </script>
+ <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js">
+
+ </script>
+ <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-messaging.js">
+
+ </script>
+ <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-functions.js">
+
+ </script>
+
+
+
+  <script>
+    // TODO: Replace the following with your app's Firebase project configuration
+    // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+     // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCECvSBvG4F4WSuwuz3_1VTj594sMmWbLI",
+    authDomain: "tanweb-77381.firebaseapp.com",
+    databaseURL: "https://tanweb-77381-default-rtdb.firebaseio.com",
+    projectId: "tanweb-77381",
+    storageBucket: "tanweb-77381.appspot.com",
+    messagingSenderId: "739284794169",
+    appId: "1:739284794169:web:f97b9ff52574359e8f46e8",
+    measurementId: "G-NMNJHRDC5H"
+  };
+
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var storage = firebase.storage();
+    // Create a storage reference from our storage service
+    var storageRef = storage.ref();
+    var spaceRef = storageRef.child('sub_category/Appendix-1.jpg9');
+    console.log(spaceRef);
+      console.log(spaceRef.fullPath);
+
+// Reference's name is the last segment of the full path: 'space.jpg'
+// This is analogous to the file name
+      console.log(spaceRef.name);
+
+// Reference's bucket is the name of the storage bucket where files are stored
+      console.log(spaceRef.bucket);
+      console.log(spaceRef.delete());
+    
+  </script> -->
+<!-- ................................firebase...................................... -->
+
+
+
+
+
+
+
+
+
+
+<div>
+
+  <!-- forgotPassword -->
+  <script>
+    $(document).on("click", "#sendOtp", function () {
+      console.log('sendotp')
+      $("#sendOtp").append(`  <div class="spinner-border" role="status">
+        <span class="sr-only">Loading</span>
+    </div>`);
+      var val = Math.floor(1000 + Math.random() * 9000);
+      console.log(val);
+
+      $("#sendOtp").val("Resend OTP")
+
+      localStorage.setItem("otp", val);
+      $.ajax({
+        type: "GET",
+        url: "{% url 'verifyOtp' %}",
+        data: { phno: $("#mobile_no").val(), otp: val },
+        success: function (data) {
+          if (data.info != "success") {
+            alert(data.info);
+            $("#verifyotpbox").empty();
+          }
+          else {
+            $("#verifyotpbox").append("<br><div class='input-group'>" +
+              "<input class='form-control width100' id='otp' placeholder='Enter 4 digit OTP'>" +
+              "<span class='input-group-btn'>" +
+              "<input type='button' id='verifyOtp' class='btn btn-info' value='Verify OTP' />" +
+              "</span>" +
+              "<div>")
+          }
+        }
+      });
+
+    });
+
+  </script>
+
+  <script>
+    $(document).on("click", "#verifyOtp", function () {
+      otp = $("#otp").val()
+      console.log('verfiyOtp ', otp);
+      if (otp == localStorage.getItem('otp')) {
+        alert("OTP Verified");
+
+        $("#verifyotpbox").empty();
+        $("#otpbox").empty();
+        $("#otpbox").append("<br><br>   <div class='input-group'>" +
+          "<input class='form-control width100' id='change_pass' placeholder='Enter New Password'>" +
+          "<input class='form-control width100' id='change_conf_pass' placeholder='Confirm New Password'>" +
+          "<span class='input-group-btn'>" +
+          "<input type='button' id='changePassword' class='btn btn-info' value='Change Password' /> " +
+          "</span><br><br>");
+
+        // $("#forgotPassword").show();
+
+      }
+      else {
+        alert("Wrong OTP")
+      }
+    });
+
+  </script>
+
+
+  <script>
+    $(document).on("click", "#changePassword", function () {
+      password = $("#change_pass").val();
+      conf_password = $("#change_conf_pass").val();
+      if (password != conf_password) {
+        alert("Password does not match");
+      }
+      else {
+
+
+
+        $.ajax({
+          type: "GET",
+          url: "{% url 'changePassword' %}",
+          data: { password: $("#change_pass").val() },
+          success: function (data) {
+            alert(data.info);
+            $("#otpbox").empty();
+            $("#forgotPassword").show();
+
+          }
+        });
+      }
+    });
+  </script>
+
+  <script>
+    $("#forgotPassword").click(function () {
+      $("#forgotPassword").hide();
+
+
+      console.log("Forgot Password")
+      $("#otpbox").append("<br><br>   <div class='input-group'>" +
+        "<input class='form-control width100' id='mobile_no' placeholder='Enter Mobile No'>" +
+        "<span class='input-group-btn'>" +
+        "<input type='button' id='sendOtp' class='btn btn-info' value='Send OTP' /> " +
+        "</span><br><br>" +
+        "</div>"
+      );
+    });
+
+  </script>
+  <!-- forgotPassword -->
+
+
+
+
+
+
+  <!-- confirm password  -->
+  <script>
+    $('#password, #confirmation_password').on('keyup', function () {
+
+      if ($('#password').val() == $('#confirmation_password').val()) {
+        $('#message').html('  Password matched <br><br>').css('color', 'green');
+      } else
+        $('#message').html('Password does not matched <br><br>').css('color', 'red');
+    });
+  </script>
+  <!-- confirm password  -->
+
+
+
+  <!-- login logout readyfunction(for refreshing page) -->
+  <script>
+    $(document).on('click', "#loginSubmit", function () {
+      emailorphone = $("#loginEmail").val();
+      password = $("#loginPassword").val();
+      if (emailorphone == "") {
+        alert("This field cannot be empty");
+        $("#loginEmail").focus();
+      }
+      else if (password == "") {
+        alert("This field cannot be empty");
+        $("#loginPassword").focus();
+      }
+      else {
+        $.ajax({
+          type: "GET",
+          url: "{% url 'login' %}",
+          data: { emailorphone: emailorphone, password: password },
+          success: function (data) {
+            console.log(data.info)
+            if (data.info.slice(0,16) == "Login Successful") {
+              
+              localStorage.setItem("login", true);
+              let link = location.href;
+              if (link.includes("type=Health+Insurance") || link.includes("type=Term+Insurance") ||
+                link.includes("type=Voter+Card") || link.includes("type=Pan+Card") || link.includes("type=Ration+card") || link.includes("type=Residential+Certificate") || link.includes("type=Income+Certificate") || link.includes("type=Driving+Licence") || link.includes("type=Life+Certificate+for+Pensioner") || link.includes("type=Food+Licence+%28For+Small+Buisness%29") || link.includes("type=Railway+Ticket")
+                || link.includes("type=Air+Ticket") || link.includes("type=Online+Mutation+Application") || link.includes("type=Bhoomi+Lagaan+%2F+Land+Tax") || link.includes("type=British+English+Council+Course") || link.includes("type=Basic+Computer+Course")) {
+                location.reload();
+              }
+
+              $("#login").modal('hide');
+              $("#loginRegister").hide();
+              $("#dashboard").show();
+              $("#user").text(data.info.slice(16));
+
+            }
+            else {
+              $("#loginMessage").text("Wrong Email or Mobile Number or password");
+            }
+          }
+        });
+      }
+
+    });
+
+
+    $(document).on('click', "#logout", function () {
+
+      $.ajax({
+        url: "{% url 'logout' %}",
+        type: "GET",
+        success: function (data) {
+          console.log(data.info);
+          if (data.info == "success") {
+            localStorage.clear();
+            $("#loginMessage").text("");
+            let link = location.href;
+            if (link.includes("type=Health+Insurance") || link.includes("type=Term+Insurance") ||
+              link.includes("type=Voter+Card") || link.includes("type=Pan+Card") || link.includes("type=Ration+card") || link.includes("type=Residential+Certificate") || link.includes("type=Income+Certificate") || link.includes("type=Driving+Licence") || link.includes("type=Life+Certificate+for+Pensioner") || link.includes("type=Food+Licence+%28For+Small+Buisness%29") || link.includes("type=Railway+Ticket")
+              || link.includes("type=Air+Ticket") || link.includes("type=Online+Mutation+Application") || link.includes("type=Bhoomi+Lagaan+%2F+Land+Tax") || link.includes("type=British+English+Council+Course") || link.includes("type=Basic+Computer+Course")) {
+              location.reload();
+            }
+          }
+
+
+          $("#dashboard").hide();
+          $("#loginRegister").show();
+
+        }
+      });
+    })
+
+
+    $(document).ready(function () {
+      /*$("#login").modal('show');*/
+      $.ajax({
+        type: "GET",
+        url: "{% url 'userSessionCheck' %}",
+        success: function (data) {
+
+          if (data.info == "failure") {
+            localStorage.clear();
+            $("#dashboard").hide();
+            $("#loginRegister").show();
+
+          }
+        }
+      });
+
+
+      if ("login" in localStorage) {
+        $("#loginRegister").hide();
+
+      }
+      else {
+        $("#dashboard").hide();
+      }
+    });
+
+  </script>
+  <!-- login logout readyfunction(for refreshing page)-->
+
+
+
+
+
+  <!-- register  -->
+
+  <script>
+    $("#registerOtpSend").click(function () {
+      phno = $("#registerPhno").val();
+      info = "register";
+      otp = Math.floor(1000 + Math.random() * 9000);
+      localStorage.setItem("otp", otp);
+      localStorage.setItem("otpStatus", "notVerified");
+      console.log(otp)
+      $("#registerChange").empty();
+      $("#registerChange").append(
+        '<br>' +
+        '<button id="registerOtpVerifyButton" class="my-3 mx-4 px-4">Verify OTP</button>'
+      )
+
+      $.ajax({
+        type: "GET",
+        url: "{% url 'sendOtp' %}",
+        data: { phno: phno, otp: otp, info: info },
+        success: function (data) {
+
+          if (data.info == "success") {
+            alert("otp send")
+            $("#registerOtpSend").text("Resend OTP");
+            $("#registerShowOtpdiv").show();
+          }
+          else {
+            alert(data.info)
+          }
+        }
+      });
+    });
+  </script>
+
+  <script>
+    $(document).on('click', "#registerOtpVerifyButton", function () {
+      if (localStorage.getItem("otp") == $("#registerOtpVerify").val()) {
+        localStorage.setItem("otpStatus", "verified");
+
+        $("#registerChange").empty();
+        $("#registerChange").append(
+          '<br>' +
+          '<p style="color:green" class="my-3 mx-4 px-4">OTP Verified</p>'
+        )
+      }
+      else {
+        alert("Please enter correct OTP");
+      }
+    });
+  </script>
+
+
+  <script>
+    $("#registerSubmit").click(function () {
+      name = $("#registerName").val();
+      email = $("#registerEmail").val();
+      whatsappPhno = $("#whatsappPhno").val();
+      password = $("#password").val();
+      confirm_password = $("#confirmation_password").val();
+      phno = $("#registerPhno").val();
+
+      if (name == "") {
+        alert("Name cannot be empty")
+        $("#registerName").focus();
+      }
+
+      else if (password == "") {
+        alert("Password cannot be empty");
+        $("#password").focus();
+      }
+      else if (phno == "") {
+        alert("Mobile Number cannot be empty");
+        $("#registerPhno").focus();
+      }
+
+      else {
+
+        if (password == confirm_password) {
+          if (localStorage.getItem("otpStatus") == "verified") {
+            $.ajax({
+              type: "GET",
+              url: "register",
+              data: { name: name, password: password, email: email, whatsappPhno: whatsappPhno, phno: phno },
+              success: function (data) {
+                alert(data.info);
+                $("#register").modal('hide');
+
+
+              }
+            });
+          }
+          else {
+            alert("Please Verify the OTP");
+          }
+        }
+
+
+        else {
+          alert("Password does not matched");
+        }
+
+      }
+    });
+  </script>
+
+  <!-- register  -->
+
+</div>
+
+
+
+{% block script %}
+{% endblock %}

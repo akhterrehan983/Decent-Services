@@ -1,0 +1,481 @@
+{% extends "tan_app_temp/navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Railway Ticket</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: "Roboto", Helvetica, Arial, sans-serif;
+      font-weight: 700px;
+      font-size: 14px;
+      line-height: 20px;
+      color: rgb(10, 0, 0);
+      background: #4CAF50;
+    }
+
+   
+
+    #contact input[type="text"],
+    #contact input[type="email"],
+    #contact input[type="tel"],
+    #contact input[type="url"],
+    #contact textarea,
+    #contact button[type="submit"] {
+      font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+    }
+
+    #contact {
+      background: #F9F9F9;
+      padding: 25px;
+      margin: 150px 0;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    #contact h3 {
+      display: block;
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+
+    #contact p {
+      margin: 5px 0 15px;
+      display: block;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    fieldset {
+      border: medium none !important;
+      margin: 0 0 10px;
+      min-width: 100%;
+      padding: 0;
+      width: 100%;
+    }
+
+    #contact input[type="text"],
+    #contact input[type="email"],
+    #contact input[type="tel"],
+    #contact input[type="url"],
+    #contact textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      background: #FFF;
+      margin: 0 0 5px;
+      padding: 10px;
+    }
+
+    #contact input[type="text"]:hover,
+    #contact input[type="email"]:hover,
+    #contact input[type="tel"]:hover,
+    #contact input[type="url"]:hover,
+    #contact textarea:hover {
+      -webkit-transition: border-color 0.3s ease-in-out;
+      -moz-transition: border-color 0.3s ease-in-out;
+      transition: border-color 0.3s ease-in-out;
+      border: 1px solid #aaa;
+    }
+
+    #contact textarea {
+      height: 100px;
+      max-width: 100%;
+      resize: none;
+    }
+
+    #contact button[type="submit"] {
+      cursor: pointer;
+      width: 100%;
+      border: none;
+      background: #4CAF50;
+      color: rgb(10, 0, 0);
+      margin: 0 0 5px;
+      padding: 10px;
+      font-size: 15px;
+    }
+
+    #contact button[type="submit"]:hover {
+      background: #43A047;
+      -webkit-transition: background 0.3s ease-in-out;
+      -moz-transition: background 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    #contact button[type="submit"]:active {
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .copyright {
+      text-align: center;
+    }
+
+    #contact input:focus,
+    #contact textarea:focus {
+      outline: 0;
+      border: 1px solid #aaa;
+    }
+
+    ::-webkit-input-placeholder {
+      color: rgb(12, 1, 1);
+    }
+
+    :-moz-placeholder {
+      color: rgb(19, 1, 1);
+    }
+
+    ::-moz-placeholder {
+      color: rgb(32, 5, 5);
+    }
+
+    :-ms-input-placeholder {
+      color: rgb(34, 3, 3);
+    }
+    
+ol {
+  counter-reset: list;
+  list-style: none;
+}
+
+ol li {
+  counter-increment: list;
+  margin-bottom: 10px;
+
+}
+
+ol li::before {
+  content: counter(list);
+  background: #53bf89;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 50%;
+  width: 2.2em;
+  height: 2.2em;
+  line-height: 2.3em;
+  display: inline-block;
+  margin-right: 1em;
+}
+
+
+
+  </style>
+</head>
+
+<body>
+
+
+
+  <div  style="max-width: 1000px;width: 100%;margin: 0 auto;position: relative;">
+    
+    <div id="contact" class="text-align:justify center">  
+      <center>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn-lg btn-success" data-toggle="modal" data-target="#exampleModal">
+          Contact Us
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+                <p style="font-size:15px;"> C/o Decent Services Ground Floor Rounak Residency H.No-722 New Layout
+                  Sitaramdera Agrico Jamshedpur-831009 Jharkhand</p>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29423.91860606243!2d86.20837864523133!3d22.802840884388406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e2fb44ea02e3%3A0x52593ed29be222ff!2sDecent%20Services!5e0!3m2!1sen!2sin!4v1632388234757!5m2!1sen!2sin" class="img-fluid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                  <br>    <br>
+                  <i class="fa fa-mobile fa-3x" aria-hidden="true"></i>
+                <p style="font-size:18px;">9122355987 / 8987761249 / 9304644158</p>
+                  
+                <i class="fa fa-phone fa-3x" aria-hidden="true"></i>
+                <p style="font-size:18px;">0657 2346390 / 2440025</p>
+                <a href="https://wa.me/message/LXQYR4TPTUB4O1"><i class="mx-3 fa fa-whatsapp fa-5x"
+                    aria-hidden="true"></i></a>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br>
+      </center>
+
+      <center><label><b>Apply For</b></label><br>
+        <select id="selec">
+            <option>Railway Ticket</option>
+            <option>Railway Enquiry</option>
+        </select>
+    </center>
+    <br>
+  
+    <div id="addForm">
+      
+    </div>
+    
+   
+  </div>
+    </div>  
+
+
+{% endblock %}
+
+
+
+{% block script %}
+<script>
+  var i=0;
+  $(document).on("click","#addPassenger",function(e){
+      e.preventDefault();
+    
+      i+=1;
+      $("#addForm").append(`<div class="form-row py-3 my-3" id="formNo${i}" >
+        <div class="form-group col-md-4">
+          <label for="inputMobile">Name</label>
+          <input type="text" id="name${i}" value="name${i}" />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputAddress">Age</label>
+          <input type="text" id="age${i}" value="age${i}" />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputPincode">Gender</label>
+          <br>
+          <select id="gender${i}">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Transgender">Transgender</option>
+          </select>
+          
+        </div>
+      </div>`
+      
+      );
+  });
+  $(document).on("click","#removePassenger",function(e){
+    e.preventDefault();
+  
+    $("#formNo"+i.toString()).remove();
+   
+    if(i>0){
+    i-=1;}
+    });
+</script>
+<script>
+  $(document).on('change',"#selec",function(){
+ 
+    choosenType = $("#selec").val();
+  
+
+    if(choosenType == "Railway Ticket"){
+
+      $("#addForm").append(`  
+      <form action="gsSave" id="myform"  enctype="multipart/form-data">
+        {% csrf_token %} 
+        <div id="showDocs" >
+          <h3>Railway Ticket</h3>
+          
+      <ol>
+        <li>Source Station(From) <input type="text" id="srcStation" /></li>
+        <li>Arrival Station(To) <input type="text" id="arrStation" /></li>
+        <li>Travel Date(UTC) <input type="date" id="travelDate" /></li>
+        <li>Class: 2S, SL, 3A, CC, 2A <input type="text" id="class" /></li>
+        <li>Train No./Name <input type="text" id="trainNoName" /></li>
+        <li>Address<input type="text" id="address" /></li>
+        <li>Pincode<input type="text" id="pincode" /></li>
+        <li>Mobile No<input type="text" id="phno" /></li>
+      </ol>
+      
+     
+       
+      <div id="addMember" style="text-align: center;">
+      </div>
+      <br>
+      <center>
+      <button id="addPassenger" style="color:blue;font-size:15px;" class="my-2 py-2">+Add Passenger</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+      <button id="removePassenger" style="color:blue;font-size:15px;" class="my-2 py-2">-Remove Passenger</button> 
+      </center>
+    </form>
+      `);
+      if(localStorage.getItem("login") != null){
+      $("#addMember").append(`
+      <button id="submitMemberBtn" class="btn btn-success">Submit</button>
+  `);}
+  else{
+    $("#addMember").append(`
+    <button id="submitMemberBtnDemo" class="btn btn-success">Submit</button>
+`);
+  }
+  }
+  else{
+    $("#addForm").empty();
+  }
+  });
+</script>
+
+
+
+<script>
+  $(document).on('click','#submitMemberBtn', function(event){
+    event.preventDefault();
+    
+    var data;
+    var nameList = [];
+    var ageList = [];
+    var genderList = [];
+    serviceType = $("#selec").val();
+
+    for(let j=0;j<=i;j++){
+    nameList.push($("#name"+j.toString()).val());
+    ageList.push($("#age"+j.toString()).val());
+    genderList.push($("#gender"+j.toString()).val());
+
+  
+  }
+  srcStation = $("#srcStation").val();
+  arrStation = $("#arrStation").val();
+  travelDate = $("#travelDate").val();
+  classs = $("#class").val();
+  trainNoName = $("#trainNoName").val();
+  address = $("#address").val();
+  pincode = $("#pincode").val();
+  phno = $("#phno").val();
+  data = {serviceType:serviceType,srcStation:srcStation,arrStation:arrStation,travelDate:travelDate,classs:classs,trainNoName:trainNoName,address:address,pincode:pincode,phno:phno,nameList:nameList,ageList:ageList,genderList:genderList}
+  /*console.log(srcStation+arrStation+travelDate+classs+trainNoName+address+pincode+phno);*/
+  console.log(data)
+  if(i != 0){
+    $.ajax({
+      url: '{% url "travel" %}',
+      data: {'dataobj': JSON.stringify(data)},
+      type: 'GET',
+      success: function (data) {
+          console.log(data);
+          location.href="status";
+          
+    },
+  });
+    }
+    else{
+      event.preventDefault();
+      alert("Please Add Passengers");
+    }
+	
+
+});
+
+</script>
+<script>
+$(document).ready(function(){
+    if(localStorage.getItem("login") != null){
+      $("#addForm").append(`  
+      <form action="gsSave" id="myform"  enctype="multipart/form-data">
+        {% csrf_token %} 
+        <div id="showDocs" >
+          <h3>Railway Ticket</h3>
+          
+      <ol>
+        <li>Source Station(From) <input type="text" id="srcStation" /></li>
+        <li>Arrival Station(To) <input type="text" id="arrStation" /></li>
+        <li>Travel Date(UTC) <input type="date" id="travelDate" /></li>
+        <li>Class: 2S, SL, 3A, CC, 2A <input type="text" id="class" /></li>
+        <li>Train No./Name <input type="text" id="trainNoName" /></li>
+        <li>Address<input type="text" id="address" /></li>
+        <li>Pincode<input type="text" id="pincode" /></li>
+        <li>Mobile No<input type="text" id="phno" /></li>
+      </ol>
+      
+     
+       
+      <div id="addMember" style="text-align: center;">
+      </div>
+      <br>
+      <center>
+      <button id="addPassenger" style="color:blue;font-size:15px;" class="my-2 py-2">+Add Passenger</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+      <button id="removePassenger" style="color:blue;font-size:15px;" class="my-2 py-2">-Remove Passenger</button> 
+      </center>
+    </form>
+      `);
+        $("#addMember").append(`
+            <button id="submitMemberBtn" class="btn btn-success">Submit</button>
+        `);
+    }
+    else{
+      $("#addForm").append(`  
+      <form action="gsSave" id="myform"  enctype="multipart/form-data">
+        {% csrf_token %} 
+        <div id="showDocs" >
+          <h3>Railway Ticket</h3>
+          
+      <ol>
+        <li>Source Station(From) <input type="text" id="srcStation" /></li>
+        <li>Arrival Station(To) <input type="text" id="arrStation" /></li>
+        <li>Travel Date(UTC) <input type="date" id="travelDate" /></li>
+        <li>Class: 2S, SL, 3A, CC, 2A <input type="text" id="class" /></li>
+        <li>Train No./Name <input type="text" id="trainNoName" /></li>
+        <li>Address<input type="text" id="address" /></li>
+        <li>Pincode<input type="text" id="pincode" /></li>
+        <li>Mobile No<input type="text" id="phno" /></li>
+      </ol>
+      
+     
+       
+      <div id="addMember" style="text-align: center;">
+      </div>
+      <br>
+      <center>
+      <button id="addPassenger" style="color:blue;font-size:15px;" class="my-2 py-2">+Add Passenger</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+      <button id="removePassenger" style="color:blue;font-size:15px;" class="my-2 py-2">-Remove Passenger</button> 
+      </center>
+    </form>
+      `);
+        $("#addMember").append(`
+            <button id="submitMemberBtnDemo" class="btn btn-success">Submit</button>
+    `);
+    }
+});
+$(document).on('click',"#submitMemberBtnDemo",function(e){
+        alert("Please Login to proceed....");
+        e.preventDefault();
+});
+</script>
+</body>
+
+</html>
+{% endblock %}

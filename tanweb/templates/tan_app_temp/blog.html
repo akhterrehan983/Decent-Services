@@ -1,0 +1,351 @@
+{% extends "tan_app_temp/navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css"
+    integrity="sha512-y6ZMKFUQrn+UUEVoqYe8ApScqbjuhjqzTuwUMEGMDuhS2niI8KA3vhH2LenreqJXQS+iIXVTRL2iaNfJbDNA1Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <style>
+    h1 {
+      font-family: "Oswald";
+      font-size: 2.4em;
+      line-height: 1;
+      text-transform: uppercase;
+
+      margin: 0;
+      padding: .375em 0 .25em;
+    }
+
+    h3 {
+      text-transform: capitalize;
+    }
+
+    #sidebar {
+      --tw-translate-x: -100%;
+      margin-top: 130px;
+     
+      background-color:white;
+      position:fixed;
+      
+
+    }
+
+    #menu-close-icon {
+      display: none;
+    }
+
+    #menu-open:checked~#sidebar {
+      --tw-translate-x: 0;
+    }
+
+    #menu-open:checked~* #mobile-menu-button {
+      background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+    }
+
+    #menu-open:checked~* #menu-open-icon {
+      display: none;
+    }
+
+    #menu-open:checked~* #menu-close-icon {
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      #sidebar {
+        --tw-translate-x: 0;
+      }
+    }
+
+
+
+    .des {
+
+      text-align: justify;
+      font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+    }
+
+
+
+
+
+
+
+
+    * {
+      color: rgba(5, 61, 75, 0.972);
+      text-decoration: none;
+    }
+
+
+
+
+
+
+
+
+    /* navbar */
+
+
+    .dropdown-toggle::after {
+      display: none;
+    }
+
+    .text-decoration-none {
+      text-decoration: none !important;
+    }
+
+    /* Font Awesome Icons have variable width. Added fixed width to fix that.*/
+    .icon-width {
+      width: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <header class="bg-yellow-600 text-gray-100 flex justify-between md:hidden" data-dev-hint="mobile menu bar">
+    <p class="block p-4 text-white font-bold whitespace-nowrap truncate">
+      Decent Services
+    </p>
+
+    <label  for="menu-open" id="mobile-menu-button"
+      class="m-2 p-2 focus:outline-none hover:text-white hover:bg-gray-700 rounded-md">
+      <svg id="menu-open-icon" class="h-6 w-6 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="menu-close-icon" class="h-6 w-6 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </label>
+  </header>
+
+
+  <div class="relative min-h-screen md:flex d-flex justify-content-between" data-dev-hint="container">
+    <input type="checkbox" id="menu-open" class="hidden" />
+
+    <label for="menu-open"
+      class="absolute right-2 bottom-2 shadow-lg rounded-full p-2 bg-gray-100 text-gray-600 md:hidden"
+      data-dev-hint="floating action button">
+      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </label>
+
+
+
+    <aside id="sidebar"  
+      class="bg-gray-800 text-gray-100 md:w-64 w-3/4 space-y-6 pt-6 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out  md:flex md:flex-col md:justify-between overflow-y-auto"
+      data-dev-hint="sidebar; px-0 for frameless; px-2 for visually inset the navigation">
+
+      <nav data-dev-hint="second-main-navigation or footer navigation">
+        <div id="wrapper" class="toggled">
+
+
+          {% for i,val in lis.items %}
+          <ul class="sub-menu list-group">
+            <li class="my-1">
+                <h2 style="font-size:25px;color:rgb(36, 4, 95);"> {{forloop.counter}}:&nbsp;{{i.0}}
+                  <button id="{{i.1}}" style="color:rgb(156, 194, 85);font-size:35px;"  class="openHeading">+</button>
+            </li>
+              {% for j in val %}
+                <li class="{{i.1}}" style="color:rgb(36, 4, 95);">
+                  <h2><button class="openBlog" id="{{j.0}}">{{forloop.counter}}:&nbsp;{{j.1}}</button></h2>
+                </li>
+                {% endfor %}
+              <br>
+          </ul>
+          {% endfor %}
+
+        </div>
+      </nav>
+
+    </aside>
+    <!-- <img src="https://www.motilaloswal.com/img/blogs/images/854_1580895623.jpeg"> -->
+
+    {% for i in reqLis %}
+    <input id="blogHeading{{forloop.counter}}" value="{{i.heading}}" type="hidden" />
+    <input id="blogContent{{forloop.counter}}" value="{{i.content}}" type="hidden" />
+    {% endfor %}
+    <section id="content"  class="flex-1 p-6 lg:px-8" style="background-color: white;">
+    </section>
+  </div>
+
+  {% endblock %}
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+ UIkit JS 
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/js/uikit-icons.min.js"></script> -->
+
+  {% block script %}
+  <script>
+    $(document).ready(function () {
+      
+      if ($(window).width()>767){
+        $("#content").css("margin-left","300px");
+        $("#sidebar").css("width","17%");
+      } 
+      if ($(window).width()<=767){
+      $("#sidebar").css("width","50%");
+      }
+                
+      let i = 1;
+      let result = "";
+      while ($("#blogHeading" + i.toString()).val() != undefined) {
+        let result = `<center><h1 style="text-decoration:underline">${$("#blogHeading"+ i.toString()).val()}</center></h1><br>`
+        result += $("#blogContent" + i.toString()).val();
+        i += 1;
+        $("#content").append(result);
+      }
+      sessionStorage.setItem("blogMenu","close");
+      
+      let url = window.location.href
+      id = url.substring(34)
+      $.ajax({
+        type:"POST",
+        url:"blog",
+        data:{blogId:id},
+        success: function(data){
+          console.log(data.blog);
+          $("#content").empty();
+          $("#content").append(data.blog);
+          
+        }
+        
+      });
+      
+    });
+    $(document).on("click","#mobile-menu-button",function(){
+      if(sessionStorage.getItem("blogMenu")=="close"){
+        $("#content").hide();
+        sessionStorage.setItem("blogMenu","open");
+      }
+      else if(sessionStorage.getItem("blogMenu")=="open"){
+        $("#content").show();
+        sessionStorage.setItem("blogMenu","close");
+      }
+      });
+  </script>
+  <script>
+
+    $(document).on("click", '.dropdown-menu a.dropdown-toggle', function () {
+      if (!$(this).next().hasClass('show')) {
+        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+      }
+      var $subMenu = $(this).next(".dropdown-menu");
+      $subMenu.toggleClass('show');
+
+
+      $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+        $('.dropdown-submenu .show').removeClass("show");
+      });
+
+
+      return false;
+    });
+  </script>
+
+
+  <script>
+    $(".showSubSubCat").click(function () {
+      console.log($(this).attr("id"));
+      console.log("rehan");
+      sub_cat_id = $(this).attr("id");
+      $.ajax({
+        type: "GET",
+        url: "showSubSubCat",
+        data: { sub_cat_id: sub_cat_id },
+        success: function (data) {
+          $(".dropdown-menu").empty();
+          console.log(data.l);
+          result = ""
+          for (i = 0; i < data.l.length; i++) {
+            result += '<li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">' + data.l[i].heading + '</a>' +
+              ' <ul class="dropdown-menu">' +
+              '<li><a class="dropdown-item" href="blog">' + "Know More" + '</a></li>' +
+              '<li><a class="dropdown-item" href="apply">' + "Apply" + '</a></li>' +
+              '<li><a class="dropdown-item" href="https://wa.me/message/LXQYR4TPTUB4O1">' + "Whatsapp" + '</a></li>' +
+
+              '</ul>' +
+              '</li>'
+          }
+
+          $(".dropdown-menu").append(result);
+        }
+      });
+    });
+  </script>
+
+  <script>
+    $(document).on("click", '.select', function () {
+      console.log($(this).attr("name"));
+      console.log($(this).attr("id"));
+      $("#sel" + $(this).attr("id")).append("<p>" + "rehan" + "</p>");
+
+    });
+  </script>
+
+  <script>
+    $(document).on('click','.openHeading',function(){ 
+      id = $(this).attr("id");
+      $(this).attr("class","closeHeading");
+      $(this).text("-");
+      $("."+id).hide();
+    });
+    $(document).on('click','.closeHeading',function(){
+      id = $(this).attr("id");
+      $(this).attr("class","openHeading");
+      $(this).text("+");
+      $("."+id).show();
+    });
+
+ $(document).on("click",".openBlog",function(){
+
+  console.log($(this).attr("id"));
+  let id = $(this).attr("id");
+  $.ajax({
+    type:"POST",
+    url:"blog",
+    data:{blogId:id},
+    success: function(data){
+      $("#content").empty();
+      $("#content").append(data.blog);
+      newHREF = "http://www.decentservices.in/blog?"+id 
+      history.pushState('', 'New Page Title', newHREF);
+      
+    }
+    
+  });
+ });
+  </script>
+
+
+
+
+
+</body>
+
+</html>
+{% endblock %}

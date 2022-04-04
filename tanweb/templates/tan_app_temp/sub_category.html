@@ -1,0 +1,282 @@
+{% extends "tan_app_temp/navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/css/uikit.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      margin: 0;
+      background: #fff;
+      font-family: Poppins;
+    }
+
+    h1 {
+      font-weight: 300;
+    }
+
+    .content {
+      margin: 8em 4em;
+      text-align: justify;
+    }
+
+    p {
+      color: grey;
+      font-weight: 300;
+      line-height: 30px;
+    }
+
+    .carousel-inner img {
+      height: 400px;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+
+    * {
+      color: rgba(5, 61, 75, 0.972);
+      text-decoration: none;
+    }
+
+
+
+
+
+
+
+
+    /* card css */
+    .card {
+      margin: 5% 0%;
+    }
+
+    .card-body {
+      margin: 0% 0% 0% 3%;
+      padding: 6% 0%;
+    }
+
+
+    .card-img-top {
+      height: 300px;
+    }
+
+    /* navbar */
+
+
+
+
+
+
+
+
+    /* drop down css*/
+
+    .dropdown-submenu {
+      position: relative;
+    }
+
+    .dropdown-submenu a::after {
+      transform: rotate(-90deg);
+      position: absolute;
+      right: 6px;
+      top: .8em;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-left: .1rem;
+      margin-right: .1rem;
+    }
+
+
+
+
+
+    /* navbar */
+
+
+    .dropdown-toggle::after {
+      display: none;
+    }
+
+    .text-decoration-none {
+      text-decoration: none !important;
+    }
+
+    /* Font Awesome Icons have variable width. Added fixed width to fix that.*/
+    .icon-width {
+      width: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+
+  <br><br>
+  <h1 class="uk-heading-line uk-text-center"><span>OUR SERVICES</span></h1>
+  <br>
+  <!-- card  -->
+
+  <div class="container">
+
+    <!-- Card deck -->
+
+    <div class="card-deck row">
+      {% for i in lis %}
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <!-- Card -->
+        <div class="card">
+
+          <!--Card image-->
+          <div class="view overlay">
+            <form action="sub_category">
+              <button style="cursor: pointer;" name="type" value="{{i.heading}}">
+
+                <img class="card-img-top" src="{{i.image}}" alt="Card image cap"> </button>
+            </form>
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <!--Title-->
+            <h4 class="card-title">{{i.heading}}</h4>
+            <!--Text-->
+            <p class="card-text">{{i.blog}}</p>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+            <div class="panel-footer row">
+              <form action="sub_category">
+                <button style="cursor: pointer;margin-left:20px;" name="type" value="{{i.heading}}"> Apply </button>
+              </form>
+
+              <form action="blog" method="GET">
+                <button style="cursor: pointer;margin-left:20px;" name="blogId" value={{i.sub_cat_id}}> Know More </button>
+              </form>
+            </div>
+            <!-- <div class="dropdown show">
+                <button class="showSubSubCat" href="#" role="button" id="{{i.sub_cat_id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  More
+                </button>
+
+
+                
+                <ul class="dropdown-menu" id="dropMenu{{i.sub_cat_id}}" aria-labelledby="dropdownMenuLink">
+                </ul>
+              </div> -->
+
+
+
+          </div>
+
+        </div>
+        <!-- Card -->
+      </div>
+
+
+      {% endfor %}
+    </div>
+    <!-- Card deck -->
+
+  </div>
+  {% endblock %}
+
+
+  {% block script %}
+  <script>
+
+    $(document).on("click", '.dropdown-menu a.dropdown-toggle', function () {
+      if (!$(this).next().hasClass('show')) {
+        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+      }
+      var $subMenu = $(this).next(".dropdown-menu");
+      $subMenu.toggleClass('show');
+
+
+      $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+        $('.dropdown-submenu .show').removeClass("show");
+      });
+
+
+      return false;
+    });
+  </script>
+
+
+  <script>
+    $(".showSubSubCat").click(function () {
+      console.log($(this).attr("id"));
+      console.log("rehan");
+      sub_cat_id = $(this).attr("id");
+
+      $.ajax({
+        type: "GET",
+        url: "showSubSubCat",
+        data: { sub_cat_id: sub_cat_id },
+        success: function (data) {
+          $("#dropMenu" + sub_cat_id).empty();
+          console.log(data.l);
+          result = ""
+          for (i = 0; i < data.l.length; i++) {
+            result += '<li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">' + data.l[i].heading + '</a>' +
+              ' <ul class="dropdown-menu">' +
+              '<li><a class="dropdown-item" href="blog">' + "Know More" + '</a></li>' +
+              '<li><a class="dropdown-item" href="apply">' + "Apply" + '</a></li>' +
+              '<li><a class="dropdown-item" href="https://wa.me/message/LXQYR4TPTUB4O1">' + "Whatsapp" + '</a></li>' +
+
+              '</ul>' +
+              '</li>'
+          }
+
+          $("#dropMenu" + sub_cat_id).append(result);
+        }
+      });
+    });
+  </script>
+
+  <script>
+    $(document).on("click", '.select', function () {
+      console.log($(this).attr("name"));
+      console.log($(this).attr("id"));
+      $("#sel" + $(this).attr("id")).append("<p>" + "rehan" + "</p>");
+
+    });
+  </script>
+
+
+
+
+
+</body>
+
+</html>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+user:-
+
+Full Name
+Gender
+DOB
+email
+phno
+area pincode
+
+Main cateogry:-
+
+name
+image
+small desc with a link
+  	sub category:-
+	

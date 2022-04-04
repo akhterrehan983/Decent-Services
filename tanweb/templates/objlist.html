@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+      .table .thead-light th {
+        color: #fff;
+ 
+        background-color: #620000;
+       
+        border-color: #FF8888;
+      }
+      th{
+        font-size: 18px;
+      }
+
+      td{
+        font-size: 15px;
+        font-weight:bold
+      }
+      
+      table, th, td {
+        border: 1px solid black;
+      }
+
+      body{
+        background-color: #7390c9;  
+      }
+
+      </style>
+
+  </head>
+<body>
+    {% if info == "sub_sub_category" or info == "sub_category" or info == "main_category" %}
+    <button type="button" class="btn btn-primary mb-3 mt-3 btn-lg" data-toggle="modal" data-target="#exampleModal">
+        Add &nbsp;&nbsp;{{info}}
+    </button>
+    {% endif %}
+
+
+
+
+
+      <!-- Modal Add-->
+      <div class="modal fade modal-dialog modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal Add</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+                
+                <form action="add_category" method="post" name={{info}} enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                      
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail4">Heading</label>
+                        <input type="text" class="form-control" name="heading" >
+                      </div>
+
+                      {% if info != "sub_sub_category" %}
+
+                      <div class="form-group col-md-6">
+                        {% if info == "main_category" %}
+                        <label for="inputPassword4">description</label>
+                        {% else %}
+                        <label for="inputPassword4">blog</label>
+
+                        {% endif %}
+                        <textarea type="text" class="form-control" name="desc" ></textarea>
+                      </div>
+                      <div>
+                        <label for="img">Select image:</label>
+                        <input type="file" id="img" name="myfile" accept="image/*">
+                        </br>
+                        {% endif %}
+                      </div>
+                      {% if info == "sub_category" or info == "sub_sub_category" %}
+                        <div class="form-group col-md-4">
+                          <label for="inputState">main_category</label>
+                          <select  class="form-control" name="dropdown">
+                            <option selected>None</option>
+                          {% for i in data %}
+                            <option>{{i}}</option>
+                          {% endfor %}
+                          </select>
+                        </div>
+                      {% endif %}
+                      <!-- <input type="submit"> -->
+                      <button  name="submit" value={{info}} >submit</button>
+                    </form>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="modal fade modal-dialog modal-lg" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal Edit</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+                
+                <form action="edit_category" method="post" name={{info}} enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail4">Heading</label>
+                        <input type="text" class="form-control" name="heading" id="heading_e" placeholder="" >
+                      </div>
+                      {% if info != "sub_sub_category" %}
+                      <div class="form-group col-md-6">
+                        {% if info == "main_category" %}
+                        <label for="inputPassword4">description</label>
+                        {% else %}
+                        <label for="inputPassword4">blog</label>
+
+                        {% endif %}
+                        <textarea type="text" class="form-control" name="desc" id="desc_e" placeholder="" ></textarea>
+                      </div>
+                      <div>
+                        <label for="img">Select image:</label>
+                        <input type="file" id="img" name="myfile" accept="image/*">
+                        </br>
+                        
+                      </div>
+                      {% endif %}
+                
+                      <input name="main_cat" id="main_cat" type="hidden" />
+                      <input name="id" id="id" type="hidden" />
+
+                      <button  name="submit" value={{info}} >Save</button>
+                    </form>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <table class="table table-hover" style="border-bottom:1px solid black;">
+        <thead class="thead-light">
+          <th class="font-weight-bold">Heading</th>
+          {% if info != "sub_sub_category" %}
+          <th>Image Url</th>
+          {% if info == "sub_category" %}
+          <th>Blog</th>
+          {% else %}
+          <th>Description</th>
+          {% endif %}
+          {% endif %}
+          <th style="width: 13%">Action</th>
+        </thead>
+        <tbody>
+          {% for j in l %}
+            <tr>
+              <td>{{j.heading}}</td>
+              {% if info != "sub_sub_category" %}
+              <td>{{j.image}}</td>
+              {% endif %}
+
+              <form action="delete">
+              
+                {% if info == "main_category" %}
+                <td>{{j.desc}}</td>
+                
+                <td style="text-align:center;"> 
+                  <button class="btn btn-danger"  name="cat_id" value={{j.cat_id}}> Delete</button>
+                  <input type="button" class="edit" id={{j.cat_id}} name="edit_main"  value="Edit"> Edit</button>
+                </td> 
+              
+                {% elif info == "sub_category" %}
+                <td>{{j.blog}}</td>
+              <td style="text-align:center;">
+                <button class="btn btn-danger"  name="sub_cat_id" value={{j.sub_cat_id}} >Delete</button>
+                <input type="button"  class="edit" id={{j.sub_cat_id}} name="edit_sub"  value="Edit">
+              </td> 
+
+              {% elif info == "sub_sub_category" %}
+              <td style="text-align:center;">
+                <button class="btn btn-danger"  name="sub_sub_cat_id" value={{j.sub_sub_cat_id}} >Delete</button>
+                <input type="button" class="edit"   id={{j.sub_sub_cat_id}} name="edit_sub_sub"  value="Edit">
+              </td> 
+
+              {% endif %}
+             
+            </form>
+          </tr>
+              {% endfor %}
+        </tbody>
+      </table>
+    
+
+
+
+
+
+
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>
+  $(".edit").click(function(){
+    //console.log($(this).attr('name'),$(this).attr('id'));
+    $('#exampleModalEdit').modal('show');
+    type=$(this).attr('name');
+    id = $(this).attr('id')
+    console.log(type,id);
+    
+    $.ajax(
+      {
+      data:{type:type,id:id},
+      url: "edit",
+      success: function(data){
+      //console.log(data.data.heading);
+      $('#heading_e').val(data.data.heading);
+      
+      if(type == "edit_sub"){
+      $('#desc_e').val(data.data.blog);
+      $('#id').val(data.data.sub_cat_id)
+      }
+      
+      else if(type == "edit_sub_sub"){
+        $('#id').val(data.data.sub_sub_cat_id)
+      }
+
+      else{
+      $('#desc_e').val(data.data.desc);
+      $('#id').val(data.data.cat_id)
+      }
+      
+      $('#main_cat').val(data.main_cat_name);
+      
+      
+    }});
+
+  })
+</script>>
+</body>
+</html>

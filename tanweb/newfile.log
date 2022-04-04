@@ -1,0 +1,108 @@
+2022-01-26 14:05:13,434 Starting new HTTPS connection (1): tanweb-77381-default-rtdb.firebaseio.com:443
+2022-01-26 14:05:14,539 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:05:14,813 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:05:17,943 Not Found: /favicon.ico
+2022-01-26 14:08:06,456 Resetting dropped connection: tanweb-77381-default-rtdb.firebaseio.com
+2022-01-26 14:08:07,478 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:08:07,752 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:08:13,761 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:12:55,465 Resetting dropped connection: tanweb-77381-default-rtdb.firebaseio.com
+2022-01-26 14:12:56,548 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:13:01,875 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:13:08,327 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:13:19,082 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:13:19,361 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:13:21,878 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:13:27,976 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:13:35,259 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:13:44,631 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:13:50,782 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:13:56,157 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:14:04,085 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:14:09,109 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:14:14,448 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:14:24,086 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:14:24,363 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:14:27,435 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:14:32,758 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:14:37,918 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:14:44,647 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:14:49,844 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:14:55,225 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:15:01,715 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:15:11,398 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:15:19,492 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:15:26,365 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:15:53,534 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:15:53,811 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:15:56,134 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:16:02,080 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:16:08,121 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:16:18,941 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:16:19,219 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:16:21,486 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:16:30,006 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:16:35,533 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:34:11,732 Resetting dropped connection: tanweb-77381-default-rtdb.firebaseio.com
+2022-01-26 14:34:12,747 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:34:13,044 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:34:17,256 Not Found: /favicon.ico
+2022-01-26 14:35:03,345 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:35:03,639 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:35:05,476 Not Found: /favicon.ico
+2022-01-26 14:49:32,012 Resetting dropped connection: tanweb-77381-default-rtdb.firebaseio.com
+2022-01-26 14:49:33,000 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:49:33,302 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:49:40,070 Not Found: /favicon.ico
+2022-01-26 14:51:47,861 Resetting dropped connection: tanweb-77381-default-rtdb.firebaseio.com
+2022-01-26 14:51:48,909 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:51:49,201 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:51:51,745 Not Found: /favicon.ico
+2022-01-26 14:52:12,511 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:52:12,830 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:52:14,795 Not Found: /favicon.ico
+2022-01-26 14:52:15,762 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:52:16,058 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:52:18,203 Not Found: /favicon.ico
+2022-01-26 14:52:35,480 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:52:35,776 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:52:37,537 Not Found: /favicon.ico
+2022-01-26 14:52:38,437 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:52:38,730 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:52:40,504 Not Found: /favicon.ico
+2022-01-26 14:52:41,002 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:52:41,294 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:52:43,243 Not Found: /favicon.ico
+2022-01-26 14:52:56,636 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:52:56,930 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:52:59,975 Not Found: /favicon.ico
+2022-01-26 14:53:07,658 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:53:07,951 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:53:09,594 Not Found: /favicon.ico
+2022-01-26 14:53:27,259 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:53:27,553 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:53:30,179 Not Found: /favicon.ico
+2022-01-26 14:53:53,632 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:53:53,927 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:53:57,256 Not Found: /favicon.ico
+2022-01-26 14:54:03,353 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:54:03,647 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:54:05,970 Not Found: /favicon.ico
+2022-01-26 14:54:23,858 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:54:23,900 Starting new HTTPS connection (2): tanweb-77381-default-rtdb.firebaseio.com:443
+2022-01-26 14:54:24,153 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:54:24,796 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:54:25,100 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:54:27,444 Not Found: /favicon.ico
+2022-01-26 14:56:35,762 Resetting dropped connection: tanweb-77381-default-rtdb.firebaseio.com
+2022-01-26 14:56:36,662 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 14:56:36,966 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 14:56:40,402 Not Found: /favicon.ico
+2022-01-26 15:00:08,440 Resetting dropped connection: tanweb-77381-default-rtdb.firebaseio.com
+2022-01-26 15:00:09,494 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 15:00:09,785 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 15:00:12,063 Not Found: /favicon.ico
+2022-01-26 15:03:10,189 Resetting dropped connection: tanweb-77381-default-rtdb.firebaseio.com
+2022-01-26 15:03:11,091 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /main_category.json HTTP/1.1" 200 1386
+2022-01-26 15:03:11,395 https://tanweb-77381-default-rtdb.firebaseio.com:443 "GET /sub_category.json HTTP/1.1" 200 6509
+2022-01-26 15:03:13,501 Not Found: /favicon.ico

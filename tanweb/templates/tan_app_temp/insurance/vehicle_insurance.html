@@ -1,0 +1,763 @@
+{% extends "tan_app_temp/navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: "Roboto", Helvetica, Arial, sans-serif;
+      font-weight: 700px;
+      font-size: 14px;
+      line-height: 20px;
+      color: rgb(10, 0, 0);
+      background: #4CAF50;
+    }
+
+   
+
+    #contact input[type="text"],
+    #contact input[type="email"],
+    #contact input[type="tel"],
+    #contact input[type="url"],
+    #contact textarea,
+    #contact button[type="submit"] {
+      font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+    }
+
+    #contact {
+      background: #F9F9F9;
+      padding: 25px;
+      margin: 150px 0;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    #contact h3 {
+      display: block;
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+
+    #contact p {
+      margin: 5px 0 15px;
+      display: block;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    fieldset {
+      border: medium none !important;
+      margin: 0 0 10px;
+      min-width: 100%;
+      padding: 0;
+      width: 100%;
+    }
+
+    #contact input[type="text"],
+    #contact input[type="email"],
+    #contact input[type="tel"],
+    #contact input[type="url"],
+    #contact textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      background: #FFF;
+      margin: 0 0 5px;
+      padding: 10px;
+    }
+
+    #contact input[type="text"]:hover,
+    #contact input[type="email"]:hover,
+    #contact input[type="tel"]:hover,
+    #contact input[type="url"]:hover,
+    #contact textarea:hover {
+      -webkit-transition: border-color 0.3s ease-in-out;
+      -moz-transition: border-color 0.3s ease-in-out;
+      transition: border-color 0.3s ease-in-out;
+      border: 1px solid #aaa;
+    }
+
+    #contact textarea {
+      height: 100px;
+      max-width: 100%;
+      resize: none;
+    }
+
+    #contact button[type="submit"] {
+      cursor: pointer;
+      width: 100%;
+      border: none;
+      background: #4CAF50;
+      color: rgb(10, 0, 0);
+      margin: 0 0 5px;
+      padding: 10px;
+      font-size: 15px;
+    }
+
+    #contact button[type="submit"]:hover {
+      background: #43A047;
+      -webkit-transition: background 0.3s ease-in-out;
+      -moz-transition: background 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    #contact button[type="submit"]:active {
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .copyright {
+      text-align: center;
+    }
+
+    #contact input:focus,
+    #contact textarea:focus {
+      outline: 0;
+      border: 1px solid #aaa;
+    }
+
+    ::-webkit-input-placeholder {
+      color: rgb(12, 1, 1);
+    }
+
+    :-moz-placeholder {
+      color: rgb(19, 1, 1);
+    }
+
+    ::-moz-placeholder {
+      color: rgb(32, 5, 5);
+    }
+
+    :-ms-input-placeholder {
+      color: rgb(34, 3, 3);
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div style="max-width: 400px;width: 100%;margin: 0 auto;position: relative;">
+    <form id="contact" method="GET">
+
+      <center>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn-lg btn-success" data-toggle="modal" data-target="#exampleModal">
+          Contact Us
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+                <p style="font-size:15px;"> C/o Decent Services Ground Floor Rounak Residency H.No-722 New Layout
+                  Sitaramdera Agrico Jamshedpur-831009 Jharkhand</p>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29423.91860606243!2d86.20837864523133!3d22.802840884388406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e2fb44ea02e3%3A0x52593ed29be222ff!2sDecent%20Services!5e0!3m2!1sen!2sin!4v1632388234757!5m2!1sen!2sin" class="img-fluid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                  <br>    <br>
+                  <i class="fa fa-mobile fa-3x" aria-hidden="true"></i>
+                <p style="font-size:18px;">9122355987 / 8987761249 / 9304644158</p>
+                  
+                <i class="fa fa-phone fa-3x" aria-hidden="true"></i>
+                <p style="font-size:18px;">0657 2346390 / 2440025</p>
+                <a href="https://wa.me/message/LXQYR4TPTUB4O1"><i class="mx-3 fa fa-whatsapp fa-5x"
+                    aria-hidden="true"></i></a>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br>
+      </center>
+
+      <div class="mx-4 px-3">
+        <h3 style="text-decoration: underline 1px solid;">Vehicle Insurance</h3>
+        
+        <br>
+        <p>Choose Type</p>
+        <fieldset>
+          <select id="chooseType">
+            <option value="p0">None</option>
+            <option value="p2">First Party</option>
+            <option value="p1">Third Party</option>
+          </select>
+        </fieldset>
+
+        <div id="addThirdParty" style="display:none;">
+          <form method='post' action='saveIm' id="form1" enctype="multipart/form-data">
+            {% csrf_token %} 
+          <label for="img">Upload Previous Insurance Paper (If available)</label>
+            <input type='file'  name='myfile1' accept='image/*'>
+            <br><br>
+          <label for="img">Upload Owner Book (Mendatory)</label>
+            <input type='file'  name='myfile2' accept='image/*'>
+            <br><br>
+          <input type="button" name='saveImageInfo' id="getQuotation" value="Get Quotation">
+          </form>
+        </div>
+        <div id="addThirdParty1" style="display: none;">
+          <form method='post' action='saveImage' id="form2" enctype="multipart/form-data">
+            {% csrf_token %} 
+          <label for="img">Upload Previous Insurance Paper (If available)</label>
+            <input type='file'  name='myfile1' accept='image/*'>
+            <br><br>
+          <label for="img">Upload Owner Book (Mendatory)</label>
+            <input type='file'  name='myfile2' accept='image/*'>
+            <br><br>
+          <button name='saveImageInfo'>Get Quotation</button>
+            </form>
+        </div>
+
+
+        <div id="addSelection"></div>
+        <!-- <br>
+        <p>Type of vehicle:</p>
+        <fieldset>
+          <select id="myselection">
+            <option value="tov0">None</option>
+            <option value="tov1">Two Wheeler</option>
+            <option value="tov2">Private Car</option>
+            <option value="tov3">Commercial Vehicles(Truck / Auto)</option>
+          </select>
+        </fieldset> -->
+
+        <div id="cubicCapacity"></div>
+
+
+        <div id="PA"></div>
+
+        <br><br><br>
+        <div id="addSubmit"></div>
+
+        <div id="errorMsg" class="px-3 mx-3"></div>
+        <div id="errorMsg1" class="px-3 mx-3"></div>
+        <input id="submit" style="display:none;" value="submit" class="btn btn-success  btn-block" data-submit="...Sending">
+        <!-- <input id="open" value="submit" type="hidden" class="btn btn-success btn btn-block" data-submit="...Sending"> -->
+      </div>
+
+      </div>
+      
+    </form>
+  </div>
+{% endblock %}
+
+
+
+{% block script %}
+
+<script>
+  $(document).ready(function(){
+    localStorage.removeItem("value");
+  })
+  function buttonEnable(msg){
+    
+    if(localStorage.getItem("login") == null)
+                  {
+                    $("#finalSubmit").attr("id","submit");
+                    $("#submit").val("Apply & Pay  ₹"+msg);
+                    $("#submit").show();
+                  }
+                  else
+                  {
+                    
+                    $("#submit").attr("id","finalSubmit");   
+                    $("#finalSubmit").val("Apply & Pay  ₹"+msg);
+                    $("#finalSubmit").show();
+                    $("#errorMsg").text("");
+                  }
+  }
+  setInterval(function(){ 
+    
+
+
+
+
+    
+    
+    if(localStorage.getItem("login") == null)
+                  {
+                    if(localStorage.getItem("value") == "p2"){
+                    $("#addThirdParty").show();
+                    $("#addThirdParty1").hide();
+                      
+                    }
+                    else{
+                      $("#addThirdParty").hide();
+                      $("#addThirdParty1").hide();  
+                  }
+
+                  }
+                  else
+                  {
+                    if(localStorage.getItem("value") == "p2"){
+                      $("#addThirdParty").hide();
+                      $("#addThirdParty1").show();
+                      $("#errorMsg1").text("");  
+                      }
+                    else{
+                        $("#addThirdParty").hide();
+                        $("#addThirdParty1").hide();  
+                    }
+                  }
+
+
+
+    type = $("#chooseType option:selected").val();
+    tov = $("#myselection option:selected").val();
+    cc = $("#selectedCubicCapacity option:selected").val();
+    pa = $("#selectedPA option:selected").val();
+    if(type!="p0" && tov!="tov0" && cc!="cc0" && pa!="pa0"){
+
+      if(type == "p1"){
+        if(tov == "tov1"){
+          if(cc == "cc1")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("959");
+                break;
+              case 'pa2': 
+                buttonEnable("569");
+                break;
+              case 'pa3': 
+                buttonEnable("510");
+                break;
+            }
+          }
+          
+          else if(cc == "cc2")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("1278");
+                break;
+              case 'pa2': 
+                buttonEnable("887");
+                break;
+              case 'pa3': 
+                buttonEnable("828");
+                break;
+            }
+          }
+
+          else if(cc == "cc3")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("1798");
+                break;
+              case 'pa2': 
+                buttonEnable("1408");
+                break;
+              case 'pa3': 
+                buttonEnable("1349");
+                break;
+            }
+          }
+
+
+          else if(cc == "cc4")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("3132");
+                break;
+              case 'pa2': 
+                buttonEnable("2741");
+                break;
+              case 'pa3': 
+                buttonEnable("2682");
+                break;
+            }
+          }
+
+        }
+      
+
+        if(tov == "tov2")
+        {
+          if(cc == "cc1")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("2835");
+                break;
+              case 'pa2': 
+                buttonEnable("2444");
+                break;
+            
+            }
+          }
+          
+          else if(cc == "cc2")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("4192");
+                break;
+              case 'pa2': 
+                buttonEnable("3801");
+                break;
+            
+            }
+          }
+
+          else if(cc == "cc3")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("9701");
+                break;
+              case 'pa2': 
+                buttonEnable("9310");
+                break;
+            }
+          }
+
+        }
+
+
+        if(tov == "tov3")
+        {
+          if(cc == "cc1")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("18027");
+                break;
+              case 'pa2': 
+                buttonEnable("17636");
+                break;
+            
+            }
+          }
+          
+          else if(cc == "cc2")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("30558");
+                break;
+              case 'pa2': 
+                buttonEnable("30237");
+                break;
+            
+            }
+          }
+
+          else if(cc == "cc3")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("37819");
+                break;
+              case 'pa2': 
+                buttonEnable("37428");
+                break;
+            }
+          }
+
+          else if(cc == "cc4")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("48592");
+                break;
+              case 'pa2': 
+                buttonEnable("48201");
+                break;
+            }
+          }
+          else if(cc == "cc5")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("46940");
+                break;
+              case 'pa2': 
+                buttonEnable("46549");
+                break;
+            }
+          }
+          else if(cc == "cc6")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("4975");
+                break;
+              case 'pa2': 
+                buttonEnable("4584");
+                break;
+            }
+          }
+          else if(cc == "cc7")
+          {
+            switch (pa) 
+            { 
+              case 'pa1': 
+                buttonEnable("7845");
+                break;
+              case 'pa2': 
+                buttonEnable("7456");
+                break;
+            }
+          }
+
+        }
+        
+      }
+    }
+    else{
+      $("#submit").hide();
+      $("#finalSubmit").hide();
+      $("#errorMsg").text("");
+    }
+
+    if(type!="p0" && tov!="tov0" && cc!="cc0" && pa!="pa0"){
+      if( localStorage.getItem("login") == null) 
+    {
+      $(document).on("click","#submit",function(){
+        $("#errorMsg").text("Please Login to proceed ...").css('color','red'); 
+      });
+    } 
+    }
+    
+    
+}, 0000);
+
+
+</script>
+
+<!-- Razorpay's Javascript code. -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+
+ 
+
+  $(document).on('click','#finalSubmit', function(event){
+    
+
+    type = $("#chooseType option:selected").text();
+    tov = $("#myselection option:selected").text();
+    cc = $("#selectedCubicCapacity option:selected").text();
+    pa = $("#selectedPA option:selected").text();
+    amt = $("#finalSubmit").val().slice(14);
+    amount = parseInt(amt)*100;
+    
+    $.ajax({
+      type: "GET",
+      url: "{% url 'payment' %}",
+      data: {type:type,tov:tov,cc:cc,pa:pa,amount:amount,niche:"vehicleInsurance"},
+      success: function(data){
+	
+	// initialise razorpay with the options.
+	var rzp1 = new Razorpay(data);
+	
+	// add event listener to the payment button.
+  
+	rzp1.open();
+	event.preventDefault();
+}
+});
+});
+</script>
+
+
+
+
+<script>
+
+      $(document).on('change', 'select[id="chooseType"]', function () {
+      var value = $("#chooseType option:selected").val();
+      localStorage.setItem("value",value);
+      $("#myselection").empty();
+      $("#addSelection").empty();
+      $("#cubicCapacity").empty();
+      $("#PA").empty();
+
+      if(value == "p1"){
+        $("#addThirdParty").hide();
+        $("#addSelection").append(
+           '<br>'+
+            '<p>Type of vehicle:</p>'+
+            '<fieldset>'+
+              '<select id="myselection">'+
+                '<option value="tov0">None</option>'+
+                '<option value="tov1">Two Wheeler</option>'+
+                '<option value="tov2">Private Car</option>'+
+                '<option value="tov3">Commercial Vehicles(Truck / Auto)</option>'+
+             ' </select>'+
+            '</fieldset>'
+        );
+      }
+      else if(value == "p2"){
+        $("#submit").hide();
+        $("#finalSubmit").hide();
+      }
+    });
+
+
+    $(document).on('click', '#getQuotation', function () {
+      $("#errorMsg1").text("Please login to proceed further").css('color', 'red');
+    });
+    
+
+
+    $(document).on('change', 'select[id="myselection"]', function () {
+
+      $("#submit").text('submit');
+      var value = $("#myselection option:selected");
+
+      $("#cubicCapacity").empty();
+      $("#PA").empty();
+
+
+
+      if (value.val() == "tov1") {
+        $("#cubicCapacity").append(
+
+          '<br><p>Choose Cubic Capacity:</p>' +
+          '<select id="selectedCubicCapacity">' +
+          '<option value="cc0">None</option>' +
+          '<option value="cc1">Upto 75 CC</option>' +
+          '<option value="cc2">75 to 150 CC </option>' +
+          '<option value="cc3">150 to 350 CC </option>' +
+          '<option value="cc4">Above 350 CC </option>' +
+          '</select>')
+      }
+      else if (value.val() == "tov2") {
+        $("#cubicCapacity").append(
+
+          '<br><p>Choose Cubic Capacity:</p>' +
+          '<select id="selectedCubicCapacity">' +
+          '<option value="cc0">None</option>' +
+          '<option value="cc1">Upto 1000 CC</option>' +
+          '<option value="cc2">1000 to 1500 CC </option>' +
+          '<option value="cc3">Above 1500 CC </option>' +
+          '</select>')
+      }
+
+      else if (value.val() == "tov3") {
+        $("#cubicCapacity").append(
+
+          '<br><p>Choose Cubic Capacity:</p>' +
+          '<select id="selectedCubicCapacity">' +
+          '<option value="cc0">None</option>' +
+          '<option value="cc1">GVW Upto 7500</option>' +
+          '<option value="cc2">7501 to 12000</option>' +
+          '<option value="cc3">12001 to 20000</option>' +
+          '<option value="cc4">20001 to 40000</option>' +
+          '<option value="cc5">Above 40000</option>' +
+          '<option value="cc6">GCV-3 Wheelers</option>' +
+          '<option value="cc7">3 Wheeler Auto Passenger carrying</option>' +
+
+          '</select>')
+      }
+
+    });
+
+    $(document).on('change', 'select[id="selectedCubicCapacity"]', function () {
+      $("#submit").text('submit');
+      var value1 = $("#myselection option:selected");
+      var value2 = $("#selectedCubicCapacity option:selected");
+
+      $("#PA").empty();
+      if (value1.val() == "tov1") {
+        $("#PA").append(
+
+          '<br><p>Choose an option:</p>' +
+          '<select id="selectedPA">' +
+          '<option value="pa0">None</option>' +
+          '<option value="pa1">With PA</option>' +
+          '<option value="pa2">Without PA</option>' +
+          '<option value="pa3">Without PA & Restricted TPPD</option>' +
+
+          '</select>')
+      }
+
+      else {
+
+        $("#PA").append(
+
+          '<br><p>Choose an option:</p>' +
+          '<select id="selectedPA">' +
+          '<option value="pa0">None</option>' +
+          '<option value="pa1">With PA</option>' +
+          '<option value="pa2">Without PA</option>' +
+          '</select>')
+      }
+
+
+
+
+      if (value2.val() == "cc0") {
+        $("#PA").empty();
+      }
+    });
+
+    $(document).on('change', 'select[id="selectedPA"]', function () {
+
+      var value1 = $("#myselection option:selected");
+      var value2 = $("#selectedCubicCapacity option:selected");
+      var value3 = $("#selectedPA option:selected");
+
+
+   
+      $("#submit").text('200');
+    });
+  </script>
+
+ 
+
+
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+        .table .thead-light th {
+            color: #fff;
+
+            background-color: #620000;
+
+            border-color: #FF8888;
+        }
+
+        th {
+            font-size: 18px;
+        }
+
+        td {
+            font-size: 15px;
+            font-weight: bold
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        body {
+            background-color: #7390c9;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2 style="text-align:center;text-decoration: underline 1px black;">{{serviceType}}</h2>
+    <center>
+        <select id="chooseType">
+            <option value="governmentServices" selected>Government Services</option>
+            <option value="insurancePayment">Insurance</option>
+            <option value="educationPayment">Education</option>
+            <option value="travel">Travel</option>
+
+        </select>
+    </center>
+    <table class="table table-hover my-3" id="table" style="border-bottom:1px solid black;">
+        <thead id="thead" class="thead-light">
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script>
+        let chooseType = $("#chooseType").val();
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'getPayment' %}",
+            data: { chooseType: chooseType },
+            success: function (data) {
+                $("#tbody").empty();
+                $("#thead").empty();
+                $("#thead").append(`
+                            <th class="font-weight-bold">Sr. No.</th>
+                            <th class="font-weight-bold">Documents</th>
+                            <th class="font-weight-bold">Service Type</th>
+                            <th class="font-weight-bold">Amount</th>
+                            <th class="font-weight-bold">Razorpay Order Id</th>
+                            <th class="font-weight-bold">Razprpay Payment Id</th>
+                            <th class="font-weight-bold">User</th>
+                            <th class="font-weight-bold">Read</th>
+                            <th class="font-weight-bold">Status</th>`
+                );
+                result = ``;
+                for (i = 0; i < data.payment.length; i++) {
+                    result += `<tr id="payment${data.payment[i].id}">
+                                <td><button class="delPayment" name="governmentServices" id=${data.payment[i].id}>${i + 1}</button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;</td><td>`
+                    for (j = 0; j < data.payment[i].docs.length; j++) {
+                        result +=
+                            `<a style="color:rgb(14, 75, 14);" href=${data.payment[i].docs[j]} target="_blank">Doc${i + 1}</a>&nbsp;&nbsp;`
+                    }
+                    result += '</td>'
+
+                    result += `
+                                <td>${data.payment[i].serviceType}</td>
+                                <td>${data.payment[i].amount}</td>
+                                <td>${data.payment[i].razorpay_order_id}</td>
+                                <td>${data.payment[i].razorpay_payment_id}</td>
+                                <td>
+                                    Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.payment[i].user.name}<br>Mobile:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${data.payment[i].user.phno}<br>Whatsapp:&nbsp;&nbsp;&nbsp;${data.payment[i].user.whatsappPhno}<br>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${data.payment[i].user.email}
+                                </td>`
+                    if (chooseType == "governmentServices") {
+                        if (data.payment[i].readUnread) {
+                            result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|governmentServicesRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id}   style="width: 20px;
+                                        height: 20px;" checked></td>`}
+                        else {
+                            result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|governmentServicesRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                        height: 20px;"></td>`}
+
+                        if (data.payment[i].status) {
+                            result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|governmentServicesStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                          height: 20px;" checked></td>`}
+                        else {
+                            result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|governmentServicesStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                          height: 20px;"></td>`}
+                    }
+                    else if (chooseType == "educationPayment") {
+                        if (data.payment[i].readUnread) {
+                            result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|educationPaymentRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                        height: 20px;" value="${data.payment[i].user.email}" checked></td>`
+                        }
+                        else {
+                            result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|educationPaymentRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                        height: 20px;" value="${data.payment[i].user.email}" ></td>`
+                        }
+
+                        if (data.payment[i].status) {
+                            result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|educationPaymentStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                          height: 20px;" value="${data.payment[i].user.email}"  checked></td>`
+                        }
+                        else {
+                            result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|educationPaymentStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                          height: 20px;" value="${data.payment[i].user.email}" ></td>`
+                        }
+                    }
+
+                    result += `<tr>`;
+
+
+
+
+                }
+                $("#tbody").append(result);
+            }
+        });
+    </script>
+    <script>
+        $(document).on('change', 'select[id="chooseType"]', function () {
+            let chooseType = $("#chooseType").val();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'getPayment' %}",
+                data: { chooseType: chooseType },
+                success: function (data) {
+
+                    if (chooseType == "insurancePayment") {
+                        $("#tbody").empty();
+                        $("#thead").empty();
+                        $("#thead").append(`
+                            <th class="font-weight-bold">Sr. No.</th>
+                            <th class="font-weight-bold">PA</th>
+                            <th class="font-weight-bold">CC</th>
+                            <th class="font-weight-bold">Type</th>
+                            <th class="font-weight-bold">Type of Vehicle</th>
+                            <th class="font-weight-bold">Service Type</th>
+                            <th class="font-weight-bold">Amount</th>
+                            <th class="font-weight-bold">Razorpay Order Id</th>
+                            <th class="font-weight-bold">Razprpay Payment Id</th>
+                            <th class="font-weight-bold">User</th>
+                            <th class="font-weight-bold">Read</th>
+                            <th class="font-weight-bold">Status</th>
+                            `
+                        );
+                        result = '';
+                        for (i = 0; i < data.payment.length; i++) {
+                            result += `<tr id="payment${data.payment[i].id}">
+                                <td><button class="delPayment" name="insurancePayment" id=${data.payment[i].id}>${i + 1}</button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>${data.payment[i].PA}</td>
+                                <td>${data.payment[i].cc}</td>
+                                <td>${data.payment[i].type}</td>
+                                <td>${data.payment[i].typeOfVehicle}</td>
+                                <td>${data.payment[i].serviceType}</td>
+                                <td>${data.payment[i].amount}</td>
+                                <td>${data.payment[i].razorpay_order_id}</td>
+                                <td>${data.payment[i].razorpay_payment_id}</td>
+                                <td>
+                                    Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.payment[i].user.name}<br>Mobile:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${data.payment[i].user.phno}<br>Whatsapp:&nbsp;&nbsp;&nbsp;${data.payment[i].user.whatsappPhno}<br>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${data.payment[i].user.email}
+                                </td>`
+
+                            if (data.payment[i].readUnread) {
+                                result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|insurancePaymentRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                height: 20px;" checked></td>`}
+                            else {
+                                result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|insurancePaymentRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                height: 20px;"></td>`}
+
+                            if (data.payment[i].status) {
+                                result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|insurancePaymentStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                  height: 20px;" checked></td>`}
+                            else {
+                                result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|insurancePaymentStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                  height: 20px;"></td>`}
+
+                            result += `</tr>`
+
+
+                        }
+                        $("#tbody").append(result);
+                    }
+                    else if (chooseType == "travel") {
+                        console.log(data.payment)
+                        console.log(data.payment.length)
+                        $("#tbody").empty();
+                        $("#thead").empty();
+                        result = '';
+                        $("#thead").append(`
+                            <th class="font-weight-bold">Sr. No.</th>
+                            <th class="font-weight-bold">Name</th>
+                            <th class="font-weight-bold">Phone No</th>
+                            <th class="font-weight-bold">Whatsapp No</th>
+                            <th class="font-weight-bold">email</th>
+                            <th class="font-weight-bold">Service Type</th>
+                            <th class="font-weight-bold">Read</th>
+                            <th class="font-weight-bold">Status</th>`
+                        );
+                        
+                        for (i = 0; i < data.payment.length; i++) {
+                           
+                            result+=`<tr id="payment${data.payment[i].id}">
+                            <td><button class="delPayment" name="travel" id=${data.payment[i].id}>${i + 1}</button></td>
+                            <td>${data.payment[i].user.name}</td>
+                            <td>${data.payment[i].user.phno}</td>
+                            <td>${data.payment[i].user.whatsappPhno}</td>
+                            <td>${data.payment[i].user.email}</td>
+                            <td>${data.payment[i].serviceType}</td>`;
+                            console.log(data.payment[i].readUnread)
+                            console.log(data.payment[i].status)
+
+                            if (data.payment[i].readUnread) {
+                                result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|travelRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                height: 20px;" checked></td>`}
+                            else {
+                                result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|travelRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                height: 20px;"></td>`}
+
+                            if (data.payment[i].status) {
+                                result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|travelStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                  height: 20px;" checked></td>`}
+                            else {
+                                result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|travelStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                  height: 20px;"></td>`}
+                            result+=`</tr>`;
+                        }
+                        $("#tbody").append(result);
+                    }
+                    else {
+                        $("#tbody").empty();
+                        $("#thead").empty();
+                        $("#thead").append(`
+                            <th class="font-weight-bold">Sr. No.</th>
+                            <th class="font-weight-bold">Documents</th>
+                            <th class="font-weight-bold">Service Type</th>
+                            <th class="font-weight-bold">Amount</th>
+                            <th class="font-weight-bold">Razorpay Order Id</th>
+                            <th class="font-weight-bold">Razprpay Payment Id</th>
+                            <th class="font-weight-bold">User</th>
+                            <th class="font-weight-bold">Read</th>
+                            <th class="font-weight-bold">Status</th>`
+
+                        );
+                        result = ``;
+                        for (i = 0; i < data.payment.length; i++) {
+                            if(chooseType == "governmentServices"){
+                            result += `<tr id="payment${data.payment[i].id}">
+                                <td><button class="delPayment" name="governmentServices" id=${data.payment[i].id}>${i + 1}</button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;</td><td>`}
+                            else if (chooseType == "educationPayment"){
+                                result += `<tr id="payment${data.payment[i].id}">
+                                    <td><button class="delPayment" name="educationPayment" id=${data.payment[i].id}>${i + 1}</button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;</td><td>`}
+                            for (j = 0; j < data.payment[i].docs.length; j++) {
+                                result +=
+                                    `<a style="color:rgb(14, 75, 14);" href=${data.payment[i].docs[j]} target="_blank">Doc${i + 1}</a>&nbsp;&nbsp;`
+                            }
+                            result += '</td>'
+
+                            result += `
+                                <td>${data.payment[i].serviceType}</td>
+                                <td>${data.payment[i].amount}</td>
+                                <td>${data.payment[i].razorpay_order_id}</td>
+                                <td>${data.payment[i].razorpay_payment_id}</td>
+                                <td>
+                                    Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.payment[i].user.name}<br>Mobile:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${data.payment[i].user.phno}<br>Whatsapp:&nbsp;&nbsp;&nbsp;${data.payment[i].user.whatsappPhno}<br>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${data.payment[i].user.email}
+                                </td>`
+                            if (chooseType == "governmentServices") {
+                                if (data.payment[i].readUnread) {
+                                    result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|governmentServicesRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id}   style="width: 20px;
+                                        height: 20px;" checked></td>`}
+                                else {
+                                    result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|governmentServicesRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                        height: 20px;"></td>`}
+
+                                if (data.payment[i].status) {
+                                    result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|governmentServicesStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                          height: 20px;" checked></td>`}
+                                else {
+                                    result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|governmentServicesStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                          height: 20px;"></td>`}
+                            }
+                            else if (chooseType == "educationPayment") {
+                                if (data.payment[i].readUnread) {
+                                    result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|educationPaymentRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                        height: 20px;" value="${data.payment[i].user.email}" checked></td>`
+                                }
+                                else {
+                                    result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|educationPaymentRead|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                        height: 20px;" value="${data.payment[i].user.email}" ></td>`
+                                }
+
+                                if (data.payment[i].status) {
+                                    result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|educationPaymentStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                          height: 20px;" value="${data.payment[i].user.email}"  checked></td>`
+                                }
+                                else {
+                                    result += `<td><input type="checkbox" class="checkBox" name="${data.payment[i].user.name}|educationPaymentStatus|${data.payment[i].serviceType}" value="${data.payment[i].user.email}" id=${data.payment[i].id} style="width: 20px;
+                                          height: 20px;" value="${data.payment[i].user.email}" ></td>`
+                                }
+                            }
+
+                            result += `<tr>`;
+
+
+
+
+                        }
+                        $("#tbody").append(result);
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).on("click", ".delPayment", function () {
+            name = $(this).attr("name");
+            id = $(this).attr("id");
+            console.log(name,id)
+            $("#payment" + id).fadeOut("fast")
+            $.ajax({
+                method: "GET",
+                url: "{% url 'delPayment' %}",
+                data: { id:id, name:name },
+                success: function (data) {
+                    console.log(data.info);
+                }
+            });
+
+        })
+    </script>
+
+    <script>
+        $(document).on('click', '.checkBox', function () {
+
+            id = $(this).attr("id");
+            email = $(this).attr("value");
+            val = $(this).attr("name").split("|");
+            name = val[0];
+            type = val[1]
+            serviceType = val[2]
+            console.log(id,name, type, email,serviceType);
+            if (type == "travelRead") {
+                $.ajax({
+                    method: "GET",
+                    url: "{% url 'checkBoxPayment' %}",
+                    data: { id: id, type: "travel", checkbox: "readUnread", email: email, name: name, serviceType: serviceType },
+                    success: function (data) {
+                        console.log(data);
+                        alert("Email Send Successfully!");
+                    }
+                });
+            }
+            else if (type == "travelStatus") {
+                $.ajax({
+                    method: "GET",
+                    url: "{% url 'checkBoxPayment' %}",
+                    data: { id: id, type: "travel", checkbox: "status", email: email, name: name, serviceType: serviceType },
+                    success: function (data) {
+                        console.log(data);
+                        alert("Email Send Successfully!");
+                    }
+                });
+            }
+
+            else if (type == "insurancePaymentRead") {
+                $.ajax({
+                    method: "GET",
+                    url: "{% url 'checkBoxPayment' %}",
+                    data: { id: id, type: "insurancePayment", checkbox: "readUnread", email: email, name: name, serviceType: serviceType },
+                    success: function (data) {
+                        console.log(data);
+                        alert("Email Send Successfully!");
+                    }
+                });
+            }
+            else if (type == "insurancePaymentStatus") {
+                $.ajax({
+                    method: "GET",
+                    url: "{% url 'checkBoxPayment' %}",
+                    data: { id: id, type: "insurancePayment", checkbox: "status", email: email, name: name, serviceType: serviceType },
+                    success: function (data) {
+                        console.log(data);
+                        alert("Email Send Successfully!");
+
+                    }
+                });
+            }
+            else if (type == "governmentServicesRead") {
+                $.ajax({
+                    method: "GET",
+                    url: "{% url 'checkBoxPayment' %}",
+                    data: { id: id, type: "governmentServices", checkbox: "readUnread", email: email, name: name, serviceType: serviceType },
+                    success: function (data) {
+                        console.log(data);
+                        alert("Email Send Successfully!");
+
+                    }
+                });
+            }
+            else if (type == "governmentServicesStatus") {
+                $.ajax({
+                    method: "GET",
+                    url: "{% url 'checkBoxPayment' %}",
+                    data: { id: id, type: "governmentServices", checkbox: "status", email: email, name: name, serviceType: serviceType },
+                    success: function (data) {
+                        console.log(data);
+                        alert("Email Send Successfully!");
+
+                    }
+                });
+            }
+            else if (type == "educationPaymentRead") {
+                $.ajax({
+                    method: "GET",
+                    url: "{% url 'checkBoxPayment' %}",
+                    data: { id: id, type: "educationPayment", checkbox: "readUnread", email: email, name: name, serviceType: serviceType },
+                    success: function (data) {
+                        console.log(data);
+                        alert("Email Send Successfully!");
+
+                    }
+                });
+            }
+            else if (type == "educationPaymentStatus") {
+                $.ajax({
+                    method: "GET",
+                    url: "{% url 'checkBoxPayment' %}",
+                    data: { id: id, type: "educationPayment", checkbox: "status", email: email, name: name, serviceType: serviceType },
+                    success: function (data) {
+                        console.log(data);
+                        alert("Email Send Successfully!");
+
+                    }
+                });
+            }
+
+
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>

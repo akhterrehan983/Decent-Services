@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+      .table .thead-light th {
+        color: #fff;
+ 
+        background-color: #620000;
+       
+        border-color: #FF8888;
+      }
+      th{
+        font-size: 18px;
+      }
+
+      td{
+        font-size: 15px;
+        font-weight:bold
+      }
+      
+      table, th, td {
+        border: 1px solid black;
+      }
+
+      body{
+        background-color: #7390c9;  
+      }
+
+      </style>
+
+  </head>
+<body>
+   
+
+    <table class="table table-hover" style="border-bottom:1px solid black;">
+        <thead class="thead-light">
+          <th class="font-weight-bold">Sr. No.</th>
+          <th class="font-weight-bold">Name</th>
+          <th class="font-weight-bold">Password</th>
+          <th class="font-weight-bold">Mobile No</th>
+          <th class="font-weight-bold">Whatsapp No</th>
+          <th class="font-weight-bold">Email ID</th>
+          <th class="font-weight-bold">Action</th>
+        </thead>
+        <tbody>
+          {% for j in user %}
+          <tr id="user{{j.id}}">
+            <td>{{forloop.counter}}</td>
+            <td>{{j.name}}</td>
+            <td>{{j.password}}</td>
+            <td>{{j.phno}}</td>
+            <td>{{j.whatsappPhno}}</td>
+            <td>{{j.email}}</td>
+            <td><button class="delUser" id={{j.id}}>Delete</button></td>
+          </tr>
+          {% endfor %}
+           
+        </tbody>
+      </table>
+    
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script>
+  $(document).on("click",".delUser",function(){
+    console.log($(this).attr("id"));
+    user_id = $(this).attr("id")
+    $("#user"+user_id).fadeOut("fast")
+    $.ajax({
+    method: "GET",
+    url: "delUser",
+    data: {id:user_id},
+    success: function(data){
+      console.log(data.info); 
+    }
+    });
+  })
+</script>
+</body>
+</html>

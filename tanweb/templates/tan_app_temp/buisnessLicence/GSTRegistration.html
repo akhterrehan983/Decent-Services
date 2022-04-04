@@ -1,0 +1,353 @@
+{% extends "tan_app_temp/navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GST Registration</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: "Roboto", Helvetica, Arial, sans-serif;
+      font-weight: 700px;
+      font-size: 14px;
+      line-height: 20px;
+      color: rgb(10, 0, 0);
+      background: #4CAF50;
+    }
+
+   
+
+    #contact input[type="text"],
+    #contact input[type="email"],
+    #contact input[type="tel"],
+    #contact input[type="url"],
+    #contact textarea,
+    #contact button[type="submit"] {
+      font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+    }
+
+    #contact {
+      background: #F9F9F9;
+      padding: 25px;
+      margin: 150px 0;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    #contact h3 {
+      display: block;
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+
+    #contact p {
+      margin: 5px 0 15px;
+      display: block;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    fieldset {
+      border: medium none !important;
+      margin: 0 0 10px;
+      min-width: 100%;
+      padding: 0;
+      width: 100%;
+    }
+
+    #contact input[type="text"],
+    #contact input[type="email"],
+    #contact input[type="tel"],
+    #contact input[type="url"],
+    #contact textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      background: #FFF;
+      margin: 0 0 5px;
+      padding: 10px;
+    }
+
+    #contact input[type="text"]:hover,
+    #contact input[type="email"]:hover,
+    #contact input[type="tel"]:hover,
+    #contact input[type="url"]:hover,
+    #contact textarea:hover {
+      -webkit-transition: border-color 0.3s ease-in-out;
+      -moz-transition: border-color 0.3s ease-in-out;
+      transition: border-color 0.3s ease-in-out;
+      border: 1px solid #aaa;
+    }
+
+    #contact textarea {
+      height: 100px;
+      max-width: 100%;
+      resize: none;
+    }
+
+    #contact button[type="submit"] {
+      cursor: pointer;
+      width: 100%;
+      border: none;
+      background: #4CAF50;
+      color: rgb(10, 0, 0);
+      margin: 0 0 5px;
+      padding: 10px;
+      font-size: 15px;
+    }
+
+    #contact button[type="submit"]:hover {
+      background: #43A047;
+      -webkit-transition: background 0.3s ease-in-out;
+      -moz-transition: background 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    #contact button[type="submit"]:active {
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .copyright {
+      text-align: center;
+    }
+
+    #contact input:focus,
+    #contact textarea:focus {
+      outline: 0;
+      border: 1px solid #aaa;
+    }
+
+    ::-webkit-input-placeholder {
+      color: rgb(12, 1, 1);
+    }
+
+    :-moz-placeholder {
+      color: rgb(19, 1, 1);
+    }
+
+    ::-moz-placeholder {
+      color: rgb(32, 5, 5);
+    }
+
+    :-ms-input-placeholder {
+      color: rgb(34, 3, 3);
+    }
+    
+ol {
+  counter-reset: list;
+  list-style: none;
+}
+
+ol li {
+  counter-increment: list;
+  margin-bottom: 10px;
+
+}
+
+ol li::before {
+  content: counter(list);
+  background: #53bf89;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 50%;
+  width: 2.2em;
+  height: 2.2em;
+  line-height: 2.3em;
+  display: inline-block;
+  margin-right: 1em;
+}
+
+
+
+  </style>
+</head>
+
+<body>
+
+
+
+  <div  style="max-width: 1000px;width: 100%;margin: 0 auto;position: relative;">
+    
+    <div id="contact" class="text-align:justify center">
+        <!-- <h4 style="text-align: center;">Only for Bihar & Jharkhand</h4> -->
+
+        <center>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-lg btn-success" data-toggle="modal" data-target="#exampleModal">
+            Contact Us
+          </button>
+  
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+                  <p style="font-size:15px;"> C/o Decent Services Ground Floor Rounak Residency H.No-722 New Layout
+                    Sitaramdera Agrico Jamshedpur-831009 Jharkhand</p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29423.91860606243!2d86.20837864523133!3d22.802840884388406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e2fb44ea02e3%3A0x52593ed29be222ff!2sDecent%20Services!5e0!3m2!1sen!2sin!4v1632388234757!5m2!1sen!2sin" class="img-fluid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <br>    <br>
+                    <i class="fa fa-mobile fa-3x" aria-hidden="true"></i>
+                  <p style="font-size:18px;">9122355987 / 8987761249 / 9304644158</p>
+                    
+                  <i class="fa fa-phone fa-3x" aria-hidden="true"></i>
+                  <p style="font-size:18px;">0657 2346390 / 2440025</p>
+                  <a href="https://wa.me/message/LXQYR4TPTUB4O1"><i class="mx-3 fa fa-whatsapp fa-5x"
+                      aria-hidden="true"></i></a>
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br><br>
+        </center>
+
+    <center><label><b>Apply For</b></label><br>
+        <select id="select">
+            <option value="GST Registration">GST Registration</option>
+        </select>
+    </center>
+    <br>
+    <form action="gsSave" id="myform"  enctype="multipart/form-data">
+      {% csrf_token %} 
+      <div id="showDocs" >
+        <h3>Documents Required</h3>
+    <ol>
+      <li>Aadhar Card </li>
+      <li>Pan Card </li>
+      <li>Bank Details</li>
+      <li>Establishment Address Proof</li>
+      <li>Photograph </li>
+      <li>Premises Address Proof</li>
+    </ol>
+      </div>
+      <input class="my-3" id="Upfile" type="file"  multiple="multiple">
+    <div id="addMember" style="text-align: center;">
+    </div>
+    </form>
+    </div>  
+    </div>
+
+{% endblock %}
+
+
+
+{% block script %}
+<script>
+  $(document).on('change',select[id="select"],function(){
+    choosenType = $("#select").val();
+  
+
+    $("#showDocs").empty();
+    if(choosenType == "GST Registration"){
+    $("#showDocs").append(`<h3>Documents Required</h3>
+    <ol>
+      <li>Aadhar Card </li>
+      <li>Pan Card </li>
+      <li>Bank Details</li>
+      <li>Establishment Address Proof</li>
+      <li>Photograph </li>
+      <li>Premises Address Proof</li>
+    </ol>`);
+  }
+  });
+</script>
+
+
+<script>
+  $(document).on('click','#submitMemberBtn', function(event){
+    event.preventDefault();
+    
+    serviceType = $("#select").val();
+   
+    
+    var data = new FormData();                                      //Create formdata 
+    let iter=0;
+    while($("#Upfile").get(0).files[iter] != undefined){
+      data.append("file"+iter.toString(),$("#Upfile").get(0).files[iter]);  //To add 
+      iter++;
+    }
+    
+    data.append("serviceType",serviceType);  
+   
+    
+    
+    if(iter != 0){
+    $.ajax({
+      url: '{% url "buisnessLicence" %}',
+      data: data,
+      type: 'POST',
+      processData: false,
+      contentType: false,
+      success: function (data) {
+          console.log(data);
+          if(data.info == "buisnessLicenceSuccess"){
+            location.href = "status";
+          }
+    },
+  });
+    }
+    else{
+      event.preventDefault();
+      alert("Please upload the required documents");
+    }
+	
+
+});
+
+</script>
+<script>
+$(document).ready(function(){
+    if(localStorage.getItem("login") != null){
+        $("#addMember").append(`
+            <button id="submitMemberBtn" class="btn btn-success">Submit</button>
+        `);
+    }
+    else{
+
+        $("#addMember").append(`
+            <button id="submitMemberBtnDemo" class="btn btn-success">Submit</button>
+    `);
+    }
+});
+$(document).on('click',"#submitMemberBtnDemo",function(e){
+        alert("Please Login to proceed....");
+        e.preventDefault();
+});
+</script>
+</body>
+
+</html>
+{% endblock %}
